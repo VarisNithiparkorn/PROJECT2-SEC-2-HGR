@@ -45,8 +45,33 @@
 <h1>
   ความคืบหน้า
 </h1>
-| สมาชิก                             | Week 1     | Week 2 | Week 3 | Week 4 |
-| :--------------------------------------   |-------- |-------- |---------| ------- |
-|  66130500105<br> Varis Nithiparkorn    | |  |  | |
-| 66130500109<br> Kritsada Atchariyapruk |  |  |  |  |
-| 66130500124<br> Phusara Khadseela      |   | |   | 
+<table>
+  <tr>
+    <td> สมาชิก </td>
+    <td> Week2</td>
+    <td> Week3</td>
+    <td> Week4</td>
+    <td> Week5</td>
+  </tr>
+  <tr>
+    <td>66130500105 Varis Nithiparkorn </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>66130500109<br> Kritsada Atchariyapruk</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>66130500124<br> Phusara Khadseela</td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+</table>
