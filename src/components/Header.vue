@@ -17,6 +17,9 @@ const props = defineProps({
     <div class="pl-6" v-show="navBar === 'show'">
       <slot name="logo" class="btn btn-ghost text-xl">Logo</slot>
     </div>
+    <div class="pl-6" v-show="navBar === 'hide'">
+      <a class="btn btn-ghost">BACK</a>
+    </div>
     <div class="flex-1 flex justify-center">
       <input
         type="text"
