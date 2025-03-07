@@ -1,4 +1,5 @@
 <script setup>
+import { computed, ref } from "vue";
 const props = defineProps({
   navBar: {
     validator(value) {
@@ -7,30 +8,72 @@ const props = defineProps({
     default: "show",
   },
 });
+const searchText = ref("");
+const text = ["computer", "laptop", "mouse", "cpu", "gpu", "keyboard"];
 
+const searchMatch = computed(() => {
+  return text.filter((t) => {
+    if (
+      t.charAt(0).toLowerCase() === searchText.value.charAt(0).toLowerCase()
+    ) {
+      return t.toLowerCase().includes(searchText.value.toLowerCase());
+    }
+  });
+});
 </script>
 
 <template>
   <div
-    :class="navBar === 'show' ?'navbar shadow-sm bg-gradient-to-r from-sky-700 to-indigo-700 fixed top-0 w-full flex items-center': 'navbar bg-none fixed top-0 w-full flex items-center'"
+    :class="
+      navBar === 'show'
+        ? 'navbar shadow-sm bg-gradient-to-r from-sky-700 to-indigo-700 fixed top-0 w-full flex items-center'
+        : 'navbar bg-none fixed top-0 w-full flex items-center'
+    "
   >
     <div class="pl-6" v-show="navBar === 'show'">
       <slot name="logo" class="btn btn-ghost text-xl">Logo</slot>
     </div>
-    <div class="pl-6" v-show="navBar === 'hide'">
-      <a class="btn btn-ghost">BACK</a>
-    </div>
+    <!-- search bar -->
     <div class="flex-1 flex justify-center">
       <input
         type="text"
         placeholder="Search"
-        class="input input-bordered w-[560px] rounded-full"
-        :class="navBar === 'show' ? 'max-sm:w-32 max-sm:h-9 max-lg:w-96 max-md:w-60' :'max-sm:w-72 max-sm:h-9 max-md:w-72 max-lg:w-96 '"
+        class="input input-bordered w-[560px] rounded-full relative"
+        :class="
+          navBar === 'show'
+            ? 'max-sm:w-32 max-sm:h-9 max-lg:w-96 max-md:w-60'
+            : 'max-sm:w-72 max-sm:h-9 max-md:w-72 max-lg:w-96 '
+        "
+        v-model="searchText"
       />
+      <div
+        v-show="searchText.length"
+        class="absolute top-14 w-[530px] bg-white text-black"
+        :class="
+          navBar === 'show'
+            ? 'w-[530px] max-sm:w-28 max-lg:w-[360px]'
+            : 'max-sm:w-64 max-lg:w-[360px]'
+        "
+      >
+        <ul>
+          <li
+            v-for="matchText in searchMatch"
+            :key="matchText"
+            class="hover:bg-gray-200 pt-1 pb-1 pl-3"
+          >
+            <a href=""
+              ><p>{{ matchText }}</p></a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="flex-none flex items-center">
       <!-- cart -->
-      <div class="dropdown dropdown-end mr-3 max-2xl:mr-5 max-sm:mr-1" v-show="navBar === 'show'">
+      <div
+        class="dropdown dropdown-end mr-3 max-2xl:mr-5 max-sm:mr-1"
+        v-show="navBar === 'show'"
+      >
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
           <div class="indicator">
             <svg
@@ -52,13 +95,13 @@ const props = defineProps({
         </div>
       </div>
       <!-- profile -->
-      <div class="dropdown dropdown-end mr-5 " v-show="navBar === 'show'">
+      <div class="dropdown dropdown-end mr-5" v-show="navBar === 'show'">
         <div
           tabindex="0"
           role="button"
           class="btn btn-ghost btn-circle avatar max-sm:-mr-5 max-sm:ml-2"
         >
-          <div class="w-10 rounded-full ">
+          <div class="w-10 rounded-full">
             <img
               alt="image"
               src="https://static.vecteezy.com/system/resources/previews/020/765/399/original/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"

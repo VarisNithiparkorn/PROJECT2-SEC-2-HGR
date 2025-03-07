@@ -4,7 +4,6 @@
 
 <template>
     <Header navBar="show">
-      
     </Header>
 </template>
 
