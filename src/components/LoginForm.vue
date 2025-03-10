@@ -7,7 +7,7 @@ function assignUser() {
     const userDataName = event.target.id
     const userDataValue =  event.target.value
     if(requireUserInfo.includes(userDataName)){
-        user[userDataName] = userDataValue 
+        user[userDataName] = userDataValue
         console.log(event.target.id +": " + typeof(event.target.value))
     }
 }
@@ -15,7 +15,7 @@ function hasUser() {
   console.log(user)
 }
 </script>
-
+ 
 <template>
     <div>
       <div class=" flex items-center justify-center w-screen h-screen max-[425px]:items-start">
@@ -35,7 +35,7 @@ function hasUser() {
               </div>
                 <InputField :user="user" @login="hasUser()" @recieveUserData="assignUser(event)">
                   <template v-slot:fieldName>
-
+ 
                   </template>
                   <template #option>
                     <p class=" underline">
@@ -49,7 +49,7 @@ function hasUser() {
       </div>
     </div>
   </template>
-
+ 
 <style scoped>
-
+ 
 </style>
