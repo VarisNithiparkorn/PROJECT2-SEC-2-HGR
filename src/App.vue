@@ -1,13 +1,12 @@
 <script setup>
-import LoginForm from './components/LoginForm.vue';
+import Header from "./components/Header.vue";
 </script>
 
 <template>
-<LoginForm>
+  <!-- show , hide -->
+  <Header navBar="show" />
 
-</LoginForm>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
+ 
