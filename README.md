@@ -31,15 +31,25 @@
   </tr>
   <tr>
     <td>66130500105 Varis Nithiparkorn </td>
-    <td> - การสร้างบัญชีผู้ใช้และลงทะเบียนใช้งานของ User</td>
+    <td> - Create User Account<br>
+    - Create session cookie after user login<br>
+    - Login if user already have an account<br>
+    - User can edit own information like address, name, phone and email</td>
   </tr>
   <tr>
     <td>66130500109<br> Kritsada Atchariyapruk</td>
-    <td> - ระบบตะกร้าสินค้า<br> - การจัดการสินค้าสำหรับ Admin </td>
+    <td>
+    - Header(search bar,จำนวนของในตะกร้า)<br>
+    - หน้าตะกร้าสินค้า(ลบเพิ่มจำนวนสินค้าในตะกร้า)<br>
+    - หน้าadmin (crud)</td>
   </tr>
   <tr>
     <td>66130500124<br> Phusara Khadseela</td>
-    <td> - การแสดงข้อมูลสินค้า - การค้นหาสินค้า</td>
+    <td> - การแสดงข้อมูลสินค้า  <br>
+    - List สินค้าในหน้า Home <br>
+    - Filler สินค้า <br>
+    - Rating สินค้า
+</td>
   </tr>
 </table>
 <h1>
@@ -55,21 +65,21 @@
   </tr>
   <tr>
     <td>66130500105 Varis Nithiparkorn </td>
-    <td> </td>
+    <td> - Ui design in Loginform<br> - event click and input handler in inputField<br>   </td>
     <td> </td>
     <td> </td>
     <td> </td>
   </tr>
   <tr>
     <td>66130500109<br> Kritsada Atchariyapruk</td>
-    <td> </td>
+    <td>- Header component </td>
     <td> </td>
     <td> </td>
     <td> </td>
   </tr>
   <tr>
     <td>66130500124<br> Phusara Khadseela</td>
-    <td> </td>
+    <td>- List Product Function </td>
     <td> </td>
     <td> </td>
     <td> </td>
