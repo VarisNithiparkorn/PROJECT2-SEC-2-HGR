@@ -1,5 +1,5 @@
 <script setup>
-import InputField from './InputField.vue';
+import UserInput from './UserInput.vue';
 import { ref } from 'vue';
 const user ={username:null, password:null}
 const requireUserInfo = Object.keys(user)
@@ -11,9 +11,8 @@ function assignUser() {
         console.log(event.target.id +": " + typeof(event.target.value))
     }
 }
-function hasUser() {
-  console.log(user)
-}
+
+
 </script>
  
 <template>
@@ -33,16 +32,18 @@ function hasUser() {
               <div class=" h-[180px] w-[180px] max-[1981px]:w-[120px] max-[1981px]:h-[120px] max-[1025px]:w-[80px] max-[1025px]:h-[80px] ">
                 <img class=" w-full h-full " src="/src/assets/user.icon.png">
               </div>
-                <InputField :user="user" @login="hasUser()" @recieveUserData="assignUser(event)">
-                  <template v-slot:fieldName>
- 
-                  </template>
+                <UserInput :user="user" @recieveUserData="assignUser">
                   <template #option>
                     <p class=" underline">
                       forget password?
                     </p>
                   </template>
-                </InputField>
+                  <template v-slot:option2>
+                    <p class=" underline">
+                      sign up
+                    </p>
+                  </template>
+                </UserInput>
             </div>
           </div>
         </div>
