@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { ref } from "vue";
 import Header from "./components/Header.vue";
 import productSection from "./components/productSection.vue";
 import dataFile from '../data/db.json';
