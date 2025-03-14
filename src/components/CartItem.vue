@@ -8,7 +8,10 @@ const emit = defineEmits([
 const props = defineProps({
   carts: {
     type: Array,
-    require: true,
+    required: true,
+    validator(value) {
+      return Array.isArray(value);
+    }
   },
   showRemoveButton: {
     type: Boolean,
@@ -19,9 +22,12 @@ const props = defineProps({
     default: false,
   },
   amount: {
-    type: Number,
-    require: true
-  },
+    type: Object,
+    required: true,
+    validator(value) {
+      return typeof value === 'object';
+    }
+  }
 });
 </script>
 
