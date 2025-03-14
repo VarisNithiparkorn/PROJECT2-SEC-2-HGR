@@ -1,5 +1,6 @@
 <script setup>
-import { computed, ref } from "vue";
+import { getItems } from "@/libs/fetchUtils";
+import { computed, onMounted, ref } from "vue";
 const props = defineProps({
   navBar: {
     validator(value) {
@@ -20,14 +21,27 @@ const searchMatch = computed(() => {
     }
   });
 });
+
+const cart = ref([])
+const itemInCart = computed(() => cart.value.length + 1);
+onMounted(async () =>{
+  try{
+    const item = await getItems(`${import.meta.env.VITE_APP_URL}/carts`)
+    cart.value.push(item)
+    itemInCart.value = cart.value.length 
+    console.log(itemInCart.value); 
+  }catch(error){
+    console.log(error);
+  }
+})
 </script>
 
 <template>
   <div
     :class="
       navBar === 'show'
-        ? 'navbar shadow-sm bg-gradient-to-r from-sky-700 to-indigo-700 fixed top-0 w-full flex items-center'
-        : 'navbar bg-none fixed top-0 w-full flex items-center'
+        ? 'navbar shadow-sm bg-gradient-to-r from-sky-700 to-indigo-700 w-full flex items-center'
+        : 'navbar bg-none w-full flex items-center'
     "
   >
     <div class="pl-6" v-show="navBar === 'show'">
@@ -90,7 +104,7 @@ const searchMatch = computed(() => {
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            <span class="badge badge-sm indicator-item">0</span>
+            <span class="badge badge-sm indicator-item">{{ itemInCart }}</span>
           </div>
         </div>
       </div>
