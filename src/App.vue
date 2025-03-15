@@ -11,15 +11,20 @@ console.log(data.value);
 <template>
   <!-- show , hide -->
   <Header navBar="show" :userId="1"/>
-  <div class=" flex pt-20">
-  <div class="inset-y-0 left-0">
+  <div class="flex">
+    <div>
+  <div class="grid grid-cols-5">
+  <div class="h-max  col-start-1 row-span-2">
   <FillerProduct/> 
   </div>
-  <div class="flex flex-wrap gap-3 justify-center">
+  <div class=" col-start-2 col-end-6">
+  <div class="flex flex-1 flex-wrap gap-3 ">
   <productSection v-for="item in data" :key="item.id" :item="item" />
 </div>
+</div>
   </div>  
-  
+</div>
+  </div>
 
 </template>
 
