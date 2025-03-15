@@ -4,7 +4,7 @@ import Header from "./components/Header.vue";
 
 <template>
   <!-- show , hide -->
-  <Header navBar="show" />
+  <Header navBar="show" :userId="1"/>
 
 </template>
 
