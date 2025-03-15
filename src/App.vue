@@ -5,6 +5,7 @@ import Header from "./components/Header.vue";
 import productSection from "./components/productSection.vue";
 import dataFile from '../data/db.json';
 import FillerProduct from "./components/FillerProduct.vue";
+import FillerProduct from "./components/FillerProduct.vue";
 const data = ref(dataFile.products)
 console.log(data.value);
 </script>
@@ -18,10 +19,8 @@ console.log(data.value);
   </div>
   <div class="flex flex-wrap gap-3 justify-center">
   <productSection v-for="item in data" :key="item.id" :item="item" />
+  </div>
 </div>
-  </div>  
-  
-
 </template>
 
 <style scoped></style>
