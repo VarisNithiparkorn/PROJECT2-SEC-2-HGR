@@ -66,7 +66,7 @@
   <tr>
     <td>66130500105 Varis Nithiparkorn </td>
     <td> - Ui design in Loginform<br> - event click and input handler in inputField<br>   </td>
-    <td> </td>
+    <td> - update responsive login ui<br> -Ui design sign up form  </td>
     <td> </td>
     <td> </td>
   </tr>
