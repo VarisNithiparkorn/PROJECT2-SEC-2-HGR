@@ -1,123 +1,141 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": "1",
+      "firstName": "First",
+      "lastName": "Last",
+      "username": "user1",
+      "password": "user1",
+      "email": "user1@mail.com",
+      "address": "address1"
+    }
+  ],
+  "admin": {
+    "id": 1,
+    "username": "admin",
+    "password": "admin"
+  },
+  "carts": [
+    {
+      "id": "1",
+      "products": [
         {
-            "id": 1,
-            "firstName": "First",
-            "lastName": "Last",
-            "username": "user1",
-            "password": "user1",
-            "email": "user1@mail.com",
-            "address": "address1"
+          "id": 1,
+          "productName": "Product Name",
+          "price": 100,
+          "quantityInStock": 0,
+          "description": "Product Description",
+          "type": "pc",
+          "amount": 1
+        },
+        {
+          "id": 2,
+          "productName": "Product Name",
+          "price": 100,
+          "quantityInStock": 0,
+          "description": "Product Description",
+          "type": "pc",
+          "amount": 2
         }
-    ],
-    "admin": {
-        "id": 1,
-        "username": "admin",
-        "password": "admin"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "pc"
     },
-    "carts": [
-        {
-            "id": 1,
-            "userId": 1,
-            "productId": 1
-        }
-    ],
-    "products": [
-        {
-            "id": 1,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "pc"
-        },
-        {
-            "id": 2,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "pc"
-        },
-        {
-            "id": 3,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "pc"
-        },
-        {
-            "id": 4,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "laptop"
-        },
-        {
-            "id": 5,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "laptop"
-        },
-        {
-            "id": 6,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "laptop"
-        },
-        {
-            "id": 7,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "gadgets"
-        },
-        {
-            "id": 8,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "gadgets"
-        },
-        {
-            "id": 9,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "gadgets"
-        },
-        {
-            "id": 10,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "gadgets"
-        },
-        {
-            "id": 11,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "gadgets"
-        },
-        {
-            "id": 12,
-            "productName":"Product Name",
-            "price":100,
-            "quantityInStock": 0,
-            "description":"Product Description",
-            "type": "gadgets"
-        }
-    ]
+    {
+      "id": "2",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "pc"
+    },
+    {
+      "id": "3",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "pc"
+    },
+    {
+      "id": "4",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "laptop"
+    },
+    {
+      "id": "5",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "laptop"
+    },
+    {
+      "id": "6",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "laptop"
+    },
+    {
+      "id": "7",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "gadgets"
+    },
+    {
+      "id": "8",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "gadgets"
+    },
+    {
+      "id": "9",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "gadgets"
+    },
+    {
+      "id": "10",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "gadgets"
+    },
+    {
+      "id": "11",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "gadgets"
+    },
+    {
+      "id": "12",
+      "productName": "Product Name",
+      "price": 100,
+      "quantityInStock": 0,
+      "description": "Product Description",
+      "type": "gadgets"
+    }
+  ]
 }

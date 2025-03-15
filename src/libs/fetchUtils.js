@@ -64,4 +64,19 @@ async function editItem(url, id, editItem) {
     throw new Error('can not edit your item')
   }
 }
-export { getItems, getItemById, deleteItemById, addItem, editItem }
+async function updateItem(url, id, updateItem) {
+  try {
+    const res = await fetch(`${url}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updateItem),
+    });
+    const updatedItem = await res.json()
+    return updatedItem
+  } catch (error) {
+    throw new Error('Cannot edit your item');
+  }
+}
+export { getItems, getItemById, deleteItemById, addItem,editItem, updateItem }
