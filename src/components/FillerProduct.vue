@@ -5,7 +5,7 @@
 <template>
     
 
-<div class="w-62 h-auto bg-amber-300 p-4">
+<div class="w-62 h-full bg-amber-300 p-4 ">
     <div>
     <select class="select">
   <option disabled selected>Pick a color</option>
