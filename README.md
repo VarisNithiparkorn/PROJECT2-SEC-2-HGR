@@ -80,7 +80,7 @@
   <tr>
     <td>66130500124<br> Phusara Khadseela</td>
     <td>- List Product Function </td>
-    <td> </td>
+    <td>- Filter UI <br> - Simple Check Filter Function </td>
     <td> </td>
     <td> </td>
   </tr>
