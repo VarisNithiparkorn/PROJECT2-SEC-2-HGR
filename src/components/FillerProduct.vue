@@ -1,6 +1,6 @@
 <script setup>
 import dataFile from '../../data/db.json';
-import { ref , watch } from 'vue';
+import { ref, watch } from 'vue';
 const test = ref("")
 const props = defineProps({
   item: {
@@ -19,8 +19,6 @@ watch(test, (newValue) => {
 </script>
 
 <template>
-    
-
 <div class="w-auto h-screen bg-gradient-to-b from-blue-400 to-violet-800 p-4 ">
   <p class="text-xl text-black underline underline-offset-8 decoration-2">Filter</p>
     <div class="pt-4">
@@ -54,8 +52,7 @@ watch(test, (newValue) => {
   <label class="text-black" for="lowstock">Low quantity in stock</label>
   </div>
 </div>
-  
-  </div>
+</div>
 </template>
 
 <style scoped>
