@@ -1,6 +1,6 @@
 <script setup>
 import { getItems } from "@/libs/fetchUtils";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 const props = defineProps({
   navBar: {
     validator(value) {
@@ -37,8 +37,8 @@ const itemCountInCart = computed(() => {
         count += p.amount;
       });
     }
-    return count;
   }
+   return count;
 });
 onMounted(async () => {
   try {

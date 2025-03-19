@@ -1,12 +1,20 @@
 <script setup>
 import { computed, onMounted, ref } from "vue";
-import CartItem from "./CartItem.vue";
+import ListCartItem from "./ListCartItem.vue";
 import { editItem, getItemById, updateItem } from "@/libs/fetchUtils";
 const emit = defineEmits(["editCart"]);
 const props = defineProps({
   userId: {
     type: Number,
     required: true,
+  },
+  page: {
+    type: String,
+    required: true,
+    validator(value) {
+      return ["cart", "payment"].includes(value);
+    },
+    default: "cart",
   },
   showRemoveButton: {
     type: Boolean,
@@ -46,20 +54,14 @@ const removeCartItem = async (pid, cid) => {
       cid
     );
     const updatedProductInCart = cart.products.filter((p) => p.id !== pid);
-    const status = await editItem(
+    const updatedCart = await editItem(
       `${import.meta.env.VITE_APP_URL}/carts`,
       cid,
       { products: updatedProductInCart }
     );
 
-    if (status === 200) {
-      itemInCart.value = itemInCart.value.map((c) => {
-        if (c.id === cid) {
-          return { ...c, products: updatedProductInCart };
-        }
-        return c;
-      });
-    }
+    const updatedIndex = itemInCart.value.findIndex((item) => item.id === cid);
+    itemInCart.value.splice(updatedIndex, 1, updatedCart);
   } catch (error) {
     console.log(error);
   }
@@ -69,60 +71,49 @@ const increaseAmount = async (pid, cid) => {
   try {
     const cart = itemInCart.value.find((c) => c.id === cid);
 
-    const updatedProduct = cart.products.map((p) => {
+    const updateProductAmount = cart.products.map((p) => {
       if (p.id === pid) {
         return { ...p, amount: p.amount + 1 };
       }
       return p;
     });
 
-    const updateProductAmountStatus = await updateItem(
+    const updatedProductAmount = await updateItem(
       `${import.meta.env.VITE_APP_URL}/carts`,
       cid,
       {
-        products: updatedProduct,
+        products: updateProductAmount,
       }
     );
-    if (updateProductAmountStatus === 200) {
-      itemInCart.value = itemInCart.value.map((c) =>
-        c.id === cid ? { ...c, products: updatedProduct } : c
-      );
-    }
+    const updatedIndex = itemInCart.value.findIndex((item) => item.id === cid);
+    itemInCart.value.splice(updatedIndex, 1, updatedProductAmount);
   } catch (error) {
     console.log(error);
   }
 };
 
 const decreaseAmount = async (pid, cid) => {
-  const cart = itemInCart.value.find((c) => c.id === cid);
-
-  const updatedProduct = cart.products.map((p) => {
-    if (p.id === pid) {
-      return {
-        ...p,
-        amount: p.amount <= 1 ? removeCartItem(pid, cid) : p.amount - 1,
-      };
-    }
-    return p;
-  });
-
   try {
-    const updateProductAmountStatus = await updateItem(
+    const cart = itemInCart.value.find((c) => c.id === cid);
+    const updateProductAmount = cart.products.map((p) => {
+      if (p.id === pid) {
+        return {
+          ...p,
+          amount: p.amount > 1 ? p.amount - 1 : p.amount
+        };
+      }
+      return p;
+    });
+    const updatedProductAmount = await updateItem(
       `${import.meta.env.VITE_APP_URL}/carts`,
       cid,
       {
-        products: updatedProduct,
+        products: updateProductAmount,
       }
     );
 
-    if (updateProductAmountStatus === 200) {
-      itemInCart.value = itemInCart.value.map((c) => {
-        if (c.id === cid) {
-          return { ...c, products: updatedProduct };
-        }
-        return c;
-      });
-    }
+    const updatedIndex = itemInCart.value.findIndex((item) => item.id === cid);
+    itemInCart.value.splice(updatedIndex, 1, updatedProductAmount);
   } catch (error) {
     console.log(error);
   }
@@ -137,7 +128,7 @@ onMounted(async () => {
       `${import.meta.env.VITE_APP_URL}/carts`,
       props.userId
     );
-    itemInCart.value = Array.isArray(items) ? items : [items];
+    itemInCart.value.push(items);
   } catch (error) {
     console.log(error);
   }
@@ -145,7 +136,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <button class="text-xl p-4 cursor-pointer">Back</button>
   <div v-if="isCartEmpty" class="w-full h-full flex justify-center">
     <h1 class="text-xl text-red-500 mt-20">Cart is empty.</h1>
   </div>
@@ -153,10 +143,11 @@ onMounted(async () => {
     class="flex flex-col mb-7 w-full justify-center items-center"
     v-show="!isCartEmpty"
   >
-    <CartItem
+    <ListCartItem
       :carts="itemInCart"
       :showRemoveButton="showRemoveButton"
       :amount="amount"
+      :page="props.page"
       @decrease-amount="decreaseAmount"
       @increase-amount="increaseAmount"
       @remove-cart-item="removeCartItem"
