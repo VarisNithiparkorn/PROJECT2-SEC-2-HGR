@@ -11,6 +11,7 @@ console.log(data.value);
 <template>
   <!-- show , hide -->
   <Header navBar="show" :userId="1"/>
+  <!-- List product and filter -->
   <div class="grid grid-cols-6 h-full">
   <div class="h-max  col-start-1 row-span-2">
   <FillerProduct/> 
