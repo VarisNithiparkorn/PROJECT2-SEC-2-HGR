@@ -12,6 +12,7 @@
           "quantityInStock": 5,
           "description": "Product Description",
           "type": "pc",
+
           "amount": 5
         },
         {
@@ -24,6 +25,7 @@
 
           "amount": 1
         }
+
       ],
       "id": "1"
     }

@@ -14,7 +14,10 @@ console.log(data.value);
 <template>
   <!-- show , hide -->
   <!-- <Header navBar="show" :userId="1"/>
+<<<<<<< HEAD
 >>>>>>> 94e9d57 (105-[update]restructure all user component)
+=======
+>>>>>>> 94e9d570045fc5694b2e4641185b366355ab6ae2
   <div class="grid grid-cols-6 h-full">
   <div class="h-max  col-start-1 row-span-2">
   <FillerProduct/> 
