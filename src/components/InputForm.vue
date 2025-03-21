@@ -1,0 +1,69 @@
+<script setup>
+import {onBeforeUpdate, onMounted, ref,watch} from 'vue'
+const emit = defineEmits(['assginData'])
+// need field to create input
+const props = defineProps({
+    inputField:{
+        type:Object,
+        require:true
+    },
+    serviceEnd:{
+        type:Boolean
+    }
+})
+
+
+// to reset inputValue after change mode
+onBeforeUpdate(()=>{
+    data = props.inputField
+})
+// value from user input
+let data = props.inputField
+
+// to set type of input
+function setInput(field) {
+  if(field !== 'password' ){
+    return 'text'
+  }else if( field === 'password'){
+    return 'password'
+  }
+}
+// assign input value and send to parent component
+function combineData(event) {
+    if(event.target.id === 'password'){
+        data[event.target.id] = event.target.value.trim()
+    }else{
+        data[event.target.id] = event.target.value.trim()
+    }
+    emit('assginData',data)
+  }
+ 
+</script>
+ 
+<template>
+    <div class=" max-[2561px]:max-[50%] max-[2561px]: mt-[-120px] max-[1981px]:mt-[0px] max-[1441]:w-full">
+        <div class v-for="(field,index) in Object.keys(data)" :key="index" >
+            <label>
+                {{ field }}
+            </label>
+        <input :type="setInput(field)" v-model="data[field]"  class=" border text-xl w-full" @input="combineData($event)" :id="field">
+        <slot name="errorMessage">
+
+        </slot>
+        </div>
+        <slot name="option">
+ 
+        </slot>
+        <div>
+            <slot name="button">
+
+            </slot>
+            <slot name="option2">
+            </slot>
+        </div>
+    </div>
+</template>
+ 
+<style scoped>
+ 
+</style>
