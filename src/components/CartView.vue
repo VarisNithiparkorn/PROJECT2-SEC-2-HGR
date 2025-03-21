@@ -99,7 +99,7 @@ const decreaseAmount = async (pid, cid) => {
       if (p.id === pid) {
         return {
           ...p,
-          amount: p.amount > 1 ? p.amount - 1 : p.amount
+          amount: p.amount > 1 ? p.amount - 1 : p.amount,
         };
       }
       return p;
@@ -152,6 +152,9 @@ onMounted(async () => {
       @increase-amount="increaseAmount"
       @remove-cart-item="removeCartItem"
     />
+    <slot name="payment">
+
+    </slot>
     <div>
       <div
         class="w-[1190px] max-lg:w-[650px] max-2xl:w-[900px] flex justify-end mt-16 max-sm:w-[300px] max-xl:w-[900px]"
@@ -165,10 +168,14 @@ onMounted(async () => {
       <div
         class="max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] flex justify-end items-end mt-5 max-sm:mr-4 max-lg:m max-md:mr-20"
       >
-        <button class="btn btn-soft mr-3" @click="$emit('editCart')">
+        <button
+          class="btn btn-soft mr-3"
+          @click="$emit('editCart')"
+          v-show="props.page === 'cart'"
+        >
           Edit
         </button>
-        <button class="btn btn-active btn-primary max-sm:w-16">Purchase</button>
+        <slot name="button"> </slot>
       </div>
     </div>
   </div>
