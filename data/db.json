@@ -1,23 +1,9 @@
 {
   "users": [
-    {
-      "id": "1",
-      "firstName": "First",
-      "lastName": "Last",
-      "username": "user1",
-      "password": "user1",
-      "email": "user1@mail.com",
-      "address": "address1"
-    }
   ],
-  "admin": {
-    "id": 1,
-    "username": "admin",
-    "password": "admin"
-  },
+  
   "carts": [
     {
-      "id": "1",
       "products": [
         {
           "id": "1",
@@ -35,9 +21,11 @@
           "quantityInStock": 10,
           "description": "Product Description",
           "type": "pc",
+
           "amount": 1
         }
-      ]
+      ],
+      "id": "1"
     }
   ],
   "products": [
