@@ -67,7 +67,7 @@
     <td>66130500105 Varis Nithiparkorn </td>
     <td> - Ui design in Loginform<br> - event click and input handler in inputField<br>   </td>
     <td> - update responsive login ui<br> -Ui design sign up form<br> -add UserRegister and sign up component</td>
-    <td> </td>
+    <td> - CreateOrAuthAccount component use to create and auth input of user<br> -logic to validate input from user </td>
     <td> </td>
   </tr>
   <tr>

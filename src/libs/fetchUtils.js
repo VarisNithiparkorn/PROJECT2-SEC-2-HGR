@@ -79,4 +79,13 @@ async function updateItem(url, id, updateItem) {
     throw new Error('Cannot edit your item');
   }
 }
-export { getItems, getItemById, deleteItemById, addItem,editItem, updateItem }
+async function getItemByFieldName(url,field,value) {
+  try{
+    const response = await fetch(url+'?'+field +'='+ value)
+    const item = await response.json()
+    return item
+  }catch(error){
+    throw new Error('This name does not has');
+  }
+}
+export {getItems, getItemById, deleteItemById, addItem,editItem, updateItem, getItemByFieldName}
