@@ -47,7 +47,7 @@ onMounted(async () => {
         <h1 class="p-5">{{ userAddress }}</h1>
       </div>
     </div>
-    <CartView :user-id="props.userId" page="payment">
+    <CartView :userId="props.userId" page="payment">
       <template #payment>
         <div class="w-full flex justify-center mt-8 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px]">
           <div class="flex border-2 w-[900px] h-[100px] p-5">
