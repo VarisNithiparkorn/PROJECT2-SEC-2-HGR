@@ -74,7 +74,7 @@
     <td>66130500109<br> Kritsada Atchariyapruk</td>
     <td>- Header component </td>
     <td>- 3 Cart components for cart page  <br>- Update header search bar search by product name from db </td>
-    <td> </td>
+    <td>- Admin page (listing product,remove product)<br>- Payment page <br>- Update 3 cart components </td>
     <td> </td>
   </tr>
   <tr>
