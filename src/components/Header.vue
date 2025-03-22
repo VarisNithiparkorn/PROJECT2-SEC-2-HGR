@@ -1,6 +1,6 @@
 <script setup>
 import { getItems } from "@/libs/fetchUtils";
-import { computed, onMounted, ref, watchEffect } from "vue";
+import { computed, onMounted, ref } from "vue";
 const props = defineProps({
   navBar: {
     validator(value) {
