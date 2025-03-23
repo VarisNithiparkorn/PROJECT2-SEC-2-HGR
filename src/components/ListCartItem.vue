@@ -30,13 +30,6 @@ const props = defineProps({
     },
     default: false,
   },
-  amount: {
-    type: Object,
-    required: true,
-    validator(value) {
-      return typeof value === "object";
-    },
-  },
 });
 </script>
 
@@ -62,16 +55,16 @@ const props = defineProps({
                 v-show="props.page === 'cart' && !popUpConfirmDelete"
                 class="cursor-pointer bg-red-500 w-4 text-center"
                 @click="$emit('decreaseAmount', product.id, cart.id)"
-                :disabled="amount[product.id] <= 1"
+                :disabled="product.amount <= 1"
               >
                 -
               </button>
-              <h2 class="pl-2 pr-1 text-sm">x {{ amount[product.id] || 0 }}</h2>
+              <h2 class="pl-2 pr-1 text-sm">x {{ product.amount }}</h2>
               <button
                 v-show="props.page === 'cart' && !popUpConfirmDelete"
                 class="cursor-pointer bg-blue-500 w-4 text-center"
                 @click="$emit('increaseAmount', product.id, cart.id)"
-                :disabled="amount[product.id] >= product.quantityInStock"
+                :disabled="product.amount >= product.quantityInStock"
               >
                 +
               </button>

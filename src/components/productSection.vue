@@ -3,6 +3,7 @@ import { defineProps,ref,watch,computed } from 'vue';
 import { getItemById,updateItem } from "@/libs/fetchUtils"
 import dataFile from '../../data/db.json';
 const data = ref(dataFile.products)
+const emit = defineEmits();
 const props = defineProps({
   item: {
     type: Object,
@@ -28,6 +29,7 @@ const addItemToCart = async (item) => {
     }
     const updatedCart = await updateItem(cartUrl, cartId, { products: cart.products });
     console.log("Item added to cart:", updatedCart);
+    emit("cartUpdated");
   } catch (error) {
     console.error("Failed to add item to cart:", error);
   }

@@ -21,6 +21,7 @@ const userAddress = computed(() => {
   }); 
   return address
 });
+
 onMounted(async () => {
   try {
     const items = await getItemById(
@@ -41,6 +42,9 @@ onMounted(async () => {
 </script>
 
 <template>
+  <router-link :to="{ name: 'Cart' }">
+    <button class="text-xl p-4 cursor-pointer" @click="back">Back</button>
+  </router-link>
   <div>
     <div class="w-full flex flex-col justify-center items-center ">
       <div class="flex border-2 w-[900px] h-[100px] mt-8 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px]">
