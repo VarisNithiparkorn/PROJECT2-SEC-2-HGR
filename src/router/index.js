@@ -4,6 +4,7 @@ import Payment from "@/components/Payment.vue";
 import CartManagement from "@/components/CartManagement.vue";
 import Register from "@/components/AccountRegister.vue";
 import Profile from "@/components/AccountProfile.vue";
+import ProductDetails from "@/components/productDetails.vue";
 const history = createWebHistory()
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         name:'Payment',
         component:Payment,
         props: true
+    },
+    {
+        path: '/products/:id',
+        name: 'Products',
+        component: ProductDetails
     },
     {
         path:'/profile/:userId',

@@ -16,6 +16,7 @@ const props = defineProps({
 });
 
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
+const productUrl = `${import.meta.env.VITE_APP_URL}/products`
 const addItemToCart = async (item) => {
   try {
     console.log("Adding item to cart:", item);
@@ -24,16 +25,28 @@ const addItemToCart = async (item) => {
       ...item,
       amount: 1 
     };
-    const cart = await getItemById(cartUrl, cartId);
-    const existingProductIndex = cart.products.findIndex(p => p.id === item.id);
-    if (existingProductIndex !== -1) {
-      cart.products[existingProductIndex].amount += 1;
+    
+    if (item.quantityInStock > 0) {
+      const cart = await getItemById(cartUrl, cartId);
+      const existingProductIndex = cart.products.findIndex(p => p.id === item.id);
+      if (existingProductIndex !== -1) {
+        cart.products[existingProductIndex].amount += 1;
+      } else {
+        cart.products.push(cartItem);
+      }
+      const updatedProduct = {
+        ...item,
+        quantityInStock: item.quantityInStock - 1
+      };
+      const updatedCart = await updateItem(cartUrl, cartId, { products: cart.products });
+      const decreasedStock = await updateItem(productUrl, item.id, updatedProduct);
+      
+      console.log("Item added to cart:", updatedCart);
+      console.log("Stock decreased:", decreasedStock);
+      emit("cartUpdated");
     } else {
-      cart.products.push(cartItem);
+      console.log("NO STOCK");
     }
-    const updatedCart = await updateItem(cartUrl, cartId, { products: cart.products });
-    console.log("Item added to cart:", updatedCart);
-    emit("cartUpdated");
   } catch (error) {
     console.error("Failed to add item to cart:", error);
   }
@@ -110,7 +123,9 @@ const sortedProducts = computed(() => {
         <p class="text-base">price: {{ item.price }}</p>
         <p class="text-base pb-3">In stock: {{ item.quantityInStock }}</p>
         <button @click="addItemToCart(item)" class="btn btn-soft btn-primary">Add to Cart</button>
-        <button @click="View" class="mt-2 btn btn-soft btn-info">View Product</button>
+        <router-link :to="{ name: 'Products', params: { id: item.id }}">
+          <button class="mt-2 btn btn-soft btn-info">View Product</button>
+        </router-link>
       </div>
     </div>
   </div>
