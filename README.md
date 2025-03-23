@@ -81,7 +81,7 @@
     <td>66130500124<br> Phusara Khadseela</td>
     <td>- List Product Function </td>
     <td>- Filter UI <br> - Simple Check Filter Function </td>
-    <td> </td>
+    <td>- Product Detail UI <br> - Filter Function <br> - Add to cart Function </td>
     <td> </td>
   </tr>
 </table>
