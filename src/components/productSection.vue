@@ -17,6 +17,7 @@ const props = defineProps({
 const cartsStore = useCarts();
 const { initCart, updateProductInCart } = cartsStore;
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
+const productUrl = `${import.meta.env.VITE_APP_URL}/products`
 const addItemToCart = async (item) => {
   try {
     console.log("Adding item to cart:", item);
