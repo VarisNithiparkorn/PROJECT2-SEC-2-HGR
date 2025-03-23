@@ -1,7 +1,5 @@
 {
-  "users": [
-  ],
-  
+  "users": [],
   "carts": [
     {
       "products": [
@@ -12,7 +10,6 @@
           "quantityInStock": 5,
           "description": "Product Description",
           "type": "pc",
-
           "amount": 5
         },
         {
@@ -24,7 +21,6 @@
           "type": "pc",
           "amount": 1
         }
-
       ],
       "id": "1"
     }

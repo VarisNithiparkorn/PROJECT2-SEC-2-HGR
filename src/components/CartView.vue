@@ -37,16 +37,6 @@ const totalPrice = computed(() => {
   }
 });
 
-const productAmount = ref({});
-const amount = computed(() => {
-  for (const item of itemInCart.value) {
-    item.products.forEach((p) => {
-      productAmount[p.id] = p.amount;
-    });
-  }
-  return productAmount;
-});
-
 const removeCartItem = async (pid, cid) => {
   try {
     const cart = await getItemById(
@@ -146,7 +136,6 @@ onMounted(async () => {
     <ListCartItem
       :carts="itemInCart"
       :showRemoveButton="showRemoveButton"
-      :amount="amount"
       :page="props.page"
       @decrease-amount="decreaseAmount"
       @increase-amount="increaseAmount"
