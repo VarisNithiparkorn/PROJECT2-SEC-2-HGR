@@ -1,26 +1,36 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { getItemById } from "@/libs/fetchUtils";
+
+const route = useRoute();
+const product = ref(null);
+
+onMounted(async () => {
+  const productId = route.params.id;
+  const productUrl = `${import.meta.env.VITE_APP_URL}/products`;
+  product.value = await getItemById(productUrl, productId);
+});
 </script>
 
 <template>
-  <!-- Full screen container -->
-  <div class="flex items-center justify-center">
-    <!-- Grid container -->
+    <router-link :to="{ name: 'Home' }">
+    <button class="text-xl p-4 cursor-pointer" @click="back">Back</button>
+  </router-link>
+  <div class="flex items-center justify-center" v-if="product">
     <div class="w-full max-w-6xl md:grid md:grid-cols-2 flex flex-wrap justify-center p-4">
-      <!-- Image section -->
       <div class="flex justify-center items-center col-1">
-        <img class="w-auto h-90" src="../../public/ProductImages/product1.jpg" alt="GOOJODOQ earphones case">
+        <img class="w-auto h-90" :src="product.image" :alt="product.productName">
       </div>
-      
-      <!-- Detail section -->
       <div class="col-2 flex flex-col justify-center">
-        <h2 class="text-xl font-semibold mb-2 text-black">Product 1</h2>
-        <p class="text-gray-600">computer desktop</p>
+        <h2 class="text-xl font-semibold mb-2 text-black">{{ product.productName }}</h2>
+        <p class="text-gray-600">{{ product.type }}</p>
         <div class="flex items-center mt-2">
           <span class="text-yellow-400">★★★★★</span>
-          <span class="text-gray-600 ml-2">4.8 | in stock: 5</span>
+          <span class="text-gray-600 ml-2">4.8 | in stock: {{ product.quantityInStock }}</span>
         </div>
         <div class="mt-3">
-          <span class="text-gray-500">$100.00</span>
+          <span class="text-gray-500">${{ product.price }}</span>
         </div>
         <div class="mt-6 flex flex-wrap max-md:justify-center">
           <button class="bg-blue-500 text-white px-4 py-2 rounded">Buy Now</button>
