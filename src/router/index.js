@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import CartManager from "@/components/CartManager.vue";
 import Home from "@/components/Homepage.vue";
 import Payment from "@/components/Payment.vue";
+import CartManagement from "@/components/CartManagement.vue";
 const history = createWebHistory()
 const routes = [
     {
@@ -14,7 +14,7 @@ const routes = [
     {
         path:'/cart',
         name:'Cart',
-        component:CartManager,
+        component:CartManagement,
         props: true
     },
     {

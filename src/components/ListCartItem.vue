@@ -52,7 +52,7 @@ const props = defineProps({
             <h1 class="mt-2 max-sm:text-sm">{{ product.productName }}</h1>
             <div class="mt-5 flex">
               <button
-                v-show="props.page === 'cart' && !popUpConfirmDelete"
+                v-show="props.page === 'cart'"
                 class="cursor-pointer bg-red-500 w-4 text-center"
                 @click="$emit('decreaseAmount', product.id, cart.id)"
                 :disabled="product.amount <= 1"
@@ -61,7 +61,7 @@ const props = defineProps({
               </button>
               <h2 class="pl-2 pr-1 text-sm">x {{ product.amount }}</h2>
               <button
-                v-show="props.page === 'cart' && !popUpConfirmDelete"
+                v-show="props.page === 'cart'"
                 class="cursor-pointer bg-blue-500 w-4 text-center"
                 @click="$emit('increaseAmount', product.id, cart.id)"
                 :disabled="product.amount >= product.quantityInStock"
