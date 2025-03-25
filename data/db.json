@@ -1,5 +1,33 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "b50e",
+      "firstName": "test",
+      "lastName": "001",
+      "username": "test1",
+      "password": "test1",
+      "email": "test@gmail.com",
+      "role": "user"
+    },
+    {
+      "id": "4579",
+      "firstName": "test2",
+      "lastName": "test2",
+      "username": "test2",
+      "password": "test2",
+      "email": "test2@gmail.com",
+      "role": "user"
+    },
+    {
+      "id": "9759",
+      "firstName": "test1",
+      "lastName": "dsa",
+      "username": "dsa",
+      "password": "sad",
+      "email": "da@gmail.com",
+      "role": "user"
+    }
+  ],
   "carts": [
     {
       "products": [
@@ -19,6 +47,15 @@
           "quantityInStock": 10,
           "description": "Product Description",
           "type": "pc",
+          "amount": 1
+        },
+        {
+          "id": "10",
+          "productName": "Product 10",
+          "price": 100,
+          "quantityInStock": 0,
+          "description": "Product Description",
+          "type": "gadgets",
           "amount": 1
         }
       ],

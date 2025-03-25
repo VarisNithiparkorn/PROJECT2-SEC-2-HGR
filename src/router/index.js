@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import CartManager from "@/components/CartManager.vue";
 import Home from "@/components/Homepage.vue";
 import Payment from "@/components/Payment.vue";
+import UserAccountManger from "@/components/UserAccountManger.vue";
 const history = createWebHistory()
 const routes = [
     {
@@ -21,6 +22,12 @@ const routes = [
         path:'/cart/payment',
         name:'Payment',
         component:Payment,
+        props: true
+    },
+    {
+        path:'/register/login',
+        name:'Login',
+        component:UserAccountManger,
         props: true
     },
 ]

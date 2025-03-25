@@ -2,23 +2,25 @@
 import { ref } from 'vue';
 import CreateOrAuthAccount from './CreateOrAuthAccount.vue';
 import AccountInfo from './AccountInfo.vue';
-const prop = defineProps({
-  currentAccount:{
-    type:Object,
-    default:{}
-  }
-})
-const currentAccount = ref(prop.currentAccount)
+import { onUpdated } from 'vue';
+import Header from './Header.vue';
+
+const currentAccount = ref({})
 function setAccount(loginAcc) {
     currentAccount.value = loginAcc
-}
+    console.log(currentAccount.value)
+  }
 </script>
 <template>
   <div>
-  <CreateOrAuthAccount v-show="false" :hasUser="JSON.stringify(currentAccount) === '{}'? false: true" @login="setAccount">
+    <Header>
+
+    </Header>
+   <CreateOrAuthAccount v-if=" JSON.stringify(currentAccount) === '{}' " :hasUser="JSON.stringify(currentAccount) === '{}'? true: false" @login="setAccount">
 
   </CreateOrAuthAccount>
-  <AccountInfo v-show="false">
+
+  <AccountInfo v-if="JSON.stringify(currentAccount) !== '{}'" :userAccount="currentAccount">
 
   </AccountInfo>
 
