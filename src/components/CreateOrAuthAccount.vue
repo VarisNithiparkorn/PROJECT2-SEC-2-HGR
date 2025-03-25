@@ -140,7 +140,7 @@ function complete() {
     <div>
       <div class=" flex items-center justify-center w-screen h-screen max-[425px]:items-start">
         <div class=" max-[2561px]:max-w-[1980px] max-[2561px]:max-h-[1020px] max-[2561px]:flex-row max-[1981px]:max-w-[1441px] max-[1981px]:max-h-[610px] max-[1441px]:max-w-[1020px] max-[1441px]:max-h-[600px] max-[1025px]:max-w-[800px] max-[1025px]:max-h-[400px] max-[426px]:flex-wrap max-[426px]:max-h-screen max-[426px]:border-none flex  w-full h-full border p-4 rounded-4xl ">
-          <div class=" w-full  p-4 flex flex-col justify-center items-center h-full max-[426px]:hidden">
+          <div class="w-full  p-4 flex flex-col justify-center items-center h-full max-[426px]:hidden">
             <div class=" flex flex-col w-11/12 h-11/12">
               <h1 class=" max-[2561px]:text-6xl max-[1441px]:text-4xl max-[769px]:text-2xl">
                 {{ isLogin ? "WELCOME BACK!!": 'Create your account '}}
@@ -148,6 +148,7 @@ function complete() {
               <h1 class=" max-[2561px]:text-6xl max-[1441px]:text-4xl max-[769px]:text-2xl">
                 {{ isLogin ? "Let's start shopping now": 'to get more dicount now!' }}
               </h1>
+              
             </div>
           </div>
           <div  class="max-[426px]:border-none w-full border flex flex-col justify-center items-center rounded-4xl">
@@ -172,7 +173,7 @@ function complete() {
                     </span>
                   </template>
                   <template v-slot:button>
-                    <button class="max-[1981px]:text-[16px] rounded-xl w-full border pt-1 pb-0.5 pl-2 pr-2 h-full   mt-2" @click=register>
+                    <button class="max-[1981px]:text-[16px] rounded-xl w-full border pt-1 pb-0.5 pl-2 pr-2 h-full bg-sky-600 mt-2 hover:bg-sky-700" @click=register>
                       {{ isLogin ? 'login':'signup' }}
                     </button>
                   </template>
