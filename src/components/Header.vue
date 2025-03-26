@@ -139,7 +139,9 @@ onMounted(async () => {
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-36 p-2 shadow"
         >
+        <router-link :to="{ name: '' }">
           <li><a> Profile </a></li>
+        </router-link>
           <li><a>Settings</a></li>
           <li><a>Logout</a></li>
         </ul>

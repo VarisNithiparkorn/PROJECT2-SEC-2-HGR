@@ -3,6 +3,7 @@ import CartManager from "@/components/CartManager.vue";
 import Home from "@/components/Homepage.vue";
 import Payment from "@/components/Payment.vue";
 import UserAccountManger from "@/components/UserAccountManger.vue";
+import AccountInfo from "@/components/AccountInfo.vue";
 const history = createWebHistory()
 const routes = [
     {
@@ -25,9 +26,9 @@ const routes = [
         props: true
     },
     {
-        path:'/register/login',
-        name:'Login',
-        component:UserAccountManger,
+        path:'/profile:user',
+        name:'profile',
+        component:AccountInfo,
         props: true
     },
 ]

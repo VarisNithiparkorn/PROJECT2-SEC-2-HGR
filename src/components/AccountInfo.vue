@@ -1,5 +1,4 @@
 <script setup>
-
 import { onMounted } from 'vue';
 import ListModel from './ListModel.vue';
 import { ref } from 'vue';
@@ -11,9 +10,7 @@ import { ref } from 'vue';
 
         </div>
         <div class=" w-full h-[50%] border">
-            <ListModel :items="userInfo">
-
-            </ListModel> >
+            
         </div>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import InputForm from './InputForm.vue';
-import { addItem, getItemByFieldName} from '@/libs/fetchUtils';
+import { addItem, getItemByFieldName, getItemById} from '@/libs/fetchUtils';
 import { ref, defineProps , defineEmits} from 'vue';
 const url = import.meta.env.VITE_APP_URL
 const props = defineProps({
@@ -17,7 +17,6 @@ const serviceEnd = ref(false)
 const loginUser = ref({})
 //input from user
 const userInput = ref({})
-
 //get in put from InputForm
 function getUserInput(user) {
     userInput.value = {...user}
@@ -46,6 +45,11 @@ async function register() {
         }else{
             console.log('login')
             loginUser.value = account
+            const cart = await getItemById(url+"/carts", loginUser.value.id)
+            if(cart === null || cart === undefined){
+              cart = await addItem(url+'/carts', {products:[],id:loginUser.value.id})
+            }
+            console.log(cart)
         }
     }else if(!isLogin.value){
         const newAccount = {}
