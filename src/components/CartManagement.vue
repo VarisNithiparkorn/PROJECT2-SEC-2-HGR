@@ -6,7 +6,9 @@ import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
 const myCart = useCarts();
 const { initCart, updateProductInCart } = myCart;
+
 const { carts, calculateTotalPrice } = storeToRefs(myCart);
+
 const emit = defineEmits(["editCart"]);
 const props = defineProps({
   userId: {
@@ -97,7 +99,9 @@ onMounted(async () => {
       `${import.meta.env.VITE_APP_URL}/carts`,
       props.userId
     );
+
     initCart(cart);
+
   } catch (error) {
     console.log(error);
   }
