@@ -1,16 +1,16 @@
 {
   "users": [
     {
-      "id": "3349",
-      "firstName": "test1",
-      "lastName": "test1",
-      "username": "test1",
-      "password": "test1",
-      "email": "test1@gmail.com",
+      "id": "e584",
+      "firstName": "test3",
+      "lastName": "test3",
+      "username": "test3",
+      "password": "test3",
+      "email": "test3@gmail.com",
       "role": "user"
     },
     {
-      "id": "968c",
+      "id": "b0e2",
       "firstName": "test2",
       "lastName": "test2",
       "username": "test2",
@@ -21,6 +21,7 @@
   ],
   "carts": [
     {
+      "id": "e584",
       "products": [
         {
           "id": "e535",
@@ -29,31 +30,13 @@
           "quantityInStock": 5,
           "description": "-",
           "type": "pc",
-          "amount": 4
-        },
-        {
-          "id": "f59e",
-          "productName": "Product 2",
-          "price": "200",
-          "quantityInStock": 5,
-          "description": "-",
-          "type": "pc",
-          "amount": 1
+          "amount": 2
         }
-      ],
-      "id": "3349"
+      ]
     },
     {
-      "id": "968c",
-      "products": [{
-        "id": "e535",
-        "productName": "Product 1",
-        "price": 2000,
-        "quantityInStock": 5,
-        "description": "-",
-        "type": "pc",
-        "amount": 4
-      }]
+      "id": "b0e2",
+      "products": []
     }
   ],
   "products": [

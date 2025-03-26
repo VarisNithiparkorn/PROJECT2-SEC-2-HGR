@@ -1,6 +1,6 @@
 <script setup>
 import Header from "./Header.vue";
-import ProductSection from "./productSection.vue";
+import productSection from "./productSection.vue";
 import { onMounted, ref } from "vue";
 import { getItems } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
@@ -19,9 +19,11 @@ const cartItemCount = ref(0);
 const calculateCartTotal = () => {
   let totalCount = 0;
   carts.value.forEach((cart) => {
-    cart.products.forEach((product) => {
-      totalCount += parseInt(product.amount || 0);
-    });
+    if (cart.id === props.userId) {
+      cart.products.forEach((product) => {
+        totalCount += parseInt(product.amount || 0);
+      });
+    }
   });
   cartItemCount.value = totalCount;
 };
@@ -32,7 +34,7 @@ const cartUpdated = async () => {
     carts.value = Array.isArray(items) ? items : [items];
     calculateCartTotal();
   } catch (error) {
-    console.error( error);
+    console.error(error);
   }
 };
 
@@ -42,12 +44,16 @@ onMounted(async () => {
     carts.value = Array.isArray(items) ? items : [items];
     calculateCartTotal();
   } catch (error) {
-    console.error( error);
+    console.error(error);
   }
 });
 </script>
 
 <template>
   <Header :userId="props.userId" :cartItemCount="cartItemCount" />
-  <productSection :item="carts" :userId="props.userId" @cartUpdated="cartUpdated" />
+  <productSection
+    :item="carts"
+    :userId="props.userId"
+    @cartUpdated="cartUpdated"
+  />
 </template>
