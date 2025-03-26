@@ -1,17 +1,19 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import { onUpdated, ref } from 'vue';
-import UserAccountManger from './components/UserAccountManger.vue';
+
+import Homepage from './components/Homepage.vue';
+import CreateOrAuthAccount from './components/CreateOrAuthAccount.vue';
 const currentUser = ref({}) 
-function getAccount(user){
-  currentUser.value = user
-  console.log(currentUser.value.firstName)
-}
+const currentAccount = ref({})
+function setAccount(loginAcc) {
+    currentAccount.value = loginAcc
+    emit('successAuth',currentAccount.value)
+  }
 </script>
 
 <template>
-  <UserAccountManger @success-auth="getAccount"></UserAccountManger>
-  
+  <!-- <Homepage :userId="currentUser.id"/> -->
   <router-view :userId="currentUser.id"></router-view>
    
 </template>

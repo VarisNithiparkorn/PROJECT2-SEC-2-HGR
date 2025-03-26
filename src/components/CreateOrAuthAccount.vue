@@ -2,16 +2,12 @@
 import InputForm from './InputForm.vue';
 import { addItem, getItemByFieldName, getItemById} from '@/libs/fetchUtils';
 import { ref, defineProps , defineEmits} from 'vue';
+import { useRouter } from 'vue-router';
 const url = import.meta.env.VITE_APP_URL
-const props = defineProps({
-    hasUser:{
-        type:Boolean,
-        default:true
-    }
-})
+const router = useRouter()
 const erroeMsg = ref('')
 const emit = defineEmits((['login']))
-const isLogin = ref(props.hasUser)
+const isLogin = ref(true)
 const serviceEnd = ref(false)
 //loged in user
 const loginUser = ref({})
@@ -43,9 +39,16 @@ async function register() {
             console.log('cannot login') 
             erroeMsg.value = 'Incorrect username or password'
         }else{
+            if(account.role === 'user'){
+              //go to admin page
+              router.push('/Home')
+            }
+            if(account.role === 'admin'){
+              //go to home page
+              
+            }
             console.log('login')
             loginUser.value = account
-          
         }
     }else if(!isLogin.value){
         const newAccount = {}
@@ -134,6 +137,7 @@ function complete() {
    serviceEnd.value = true
    loginUser.value = {}
    userInput.value = {}
+   isLogin.value = true
    serviceEnd.value = false
 }
 </script>
@@ -175,9 +179,11 @@ function complete() {
                     </span>
                   </template>
                   <template v-slot:button>
-                    <button class="max-[1981px]:text-[16px] rounded-xl w-full border pt-1 pb-0.5 pl-2 pr-2 h-full bg-sky-600 mt-2 hover:bg-sky-700" @click=register>
+               
+                      <button class="max-[1981px]:text-[16px] rounded-xl w-full border pt-1 pb-0.5 pl-2 pr-2 h-full bg-sky-600 mt-2 hover:bg-sky-700" @click=register>
                       {{ isLogin ? 'login':'signup' }}
                     </button>
+                  
                   </template>
                   <template v-slot:option2>
                     <p @click="changeForm" class=" text-center mt-2">

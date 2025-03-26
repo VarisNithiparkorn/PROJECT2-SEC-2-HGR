@@ -1,41 +1,18 @@
 {
   "users": [
     {
-      "id": "e584",
-      "firstName": "test3",
-      "lastName": "test3",
-      "username": "test3",
-      "password": "test3",
-      "email": "test3@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "b0e2",
-      "firstName": "test2",
-      "lastName": "test2",
-      "username": "test2",
-      "password": "test2",
-      "email": "test2@gmail.com",
+      "id": "727c",
+      "firstName": "test1",
+      "lastName": "test1",
+      "username": "test1",
+      "password": "test1",
+      "email": "test1@gmail.com",
       "role": "user"
     }
   ],
   "carts": [
     {
-      "id": "e584",
-      "products": [
-        {
-          "id": "e535",
-          "productName": "Product 1",
-          "price": 2000,
-          "quantityInStock": 5,
-          "description": "-",
-          "type": "pc",
-          "amount": 2
-        }
-      ]
-    },
-    {
-      "id": "b0e2",
+      "id": "727c",
       "products": []
     }
   ],
