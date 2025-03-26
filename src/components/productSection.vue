@@ -1,6 +1,7 @@
 <script setup>
-import { defineProps,ref,watch,computed } from 'vue';
-import { getItemById,updateItem } from "@/libs/fetchUtils"
+import { defineProps, ref, watch, computed, onMounted } from 'vue';
+import { getItemById, updateItem } from "@/libs/fetchUtils"
+import { useCarts } from '@/stores/Carts';
 import dataFile from '../../data/db.json';
 const data = ref(dataFile.products)
 const emit = defineEmits();
@@ -14,6 +15,8 @@ const props = defineProps({
     required: true
   },
 });
+
+const cartsStore = useCarts();
 
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
 const addItemToCart = async (item) => {
@@ -34,6 +37,7 @@ const addItemToCart = async (item) => {
         cart.products.push(cartItem);
       }
       const updatedCart = await updateItem(cartUrl, cartId, { products: cart.products });
+      cartsStore.updateProductInCart(cartId, updatedCart);
       console.log("Item added to cart:", updatedCart);
       emit("cartUpdated");
     } else {
@@ -68,6 +72,11 @@ const sortedProducts = computed(() => {
       break;
   }
   return filtered;
+});
+
+onMounted(async () => {
+  const cart = await getItemById(cartUrl, 1);
+  cartsStore.initCart(cart);
 });
 </script>
 
