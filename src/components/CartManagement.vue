@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeMount, onMounted, ref } from "vue";
 import ListCartItem from "./ListCartItem.vue";
 import { editItem, getItemById, updateItem } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
@@ -92,6 +92,10 @@ const decreaseAmount = async (pid, cid) => {
 const isCartEmpty = computed(() => {
   return calculateTotalPrice.value <= 0;
 });
+onBeforeMount(()=>{
+  carts.value = []
+}) 
+
 
 onMounted(async () => {
   try {
