@@ -3,7 +3,10 @@ import Header from "./Header.vue";
 import ProductSection from "./ProductSection.vue";
 import { onMounted, ref } from "vue";
 import { getItems } from "@/libs/fetchUtils";
-
+import { useCarts } from "@/stores/Carts";
+import { storeToRefs } from "pinia";
+const myCart = useCarts();
+const { carts } = storeToRefs(myCart);
 const props = defineProps({
   userId: {
     type: Number,
@@ -11,7 +14,6 @@ const props = defineProps({
   },
 });
 
-const carts = ref([]);
 const cartItemCount = ref(0);
 
 const calculateCartTotal = () => {
@@ -47,5 +49,5 @@ onMounted(async () => {
 
 <template>
   <Header :userId="props.userId" :cartItemCount="cartItemCount" />
-  <ProductSection @cartUpdated="cartUpdated" />
+  <ProductSection :item="carts" @cartUpdated="cartUpdated" />
 </template>

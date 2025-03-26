@@ -2,108 +2,89 @@
   "users": [],
   "carts": [
     {
-      "products": [
-        {
-          "id": "1",
-          "productName": "Product 1",
-          "price": 100,
-          "quantityInStock": 5,
-          "description": "Product Description",
-          "type": "pc",
-          "amount": 5
-        },
-        {
-          "id": "2",
-          "productName": "Product 2",
-          "price": 200,
-          "quantityInStock": 10,
-          "description": "Product Description",
-          "type": "pc",
-          "amount": 1
-        }
-      ],
+      "products": [],
       "id": "1"
     }
   ],
   "products": [
     {
-      "id": "1",
+      "id": "e535",
       "productName": "Product 1",
-      "price": 100,
+      "price": 2000,
       "quantityInStock": 5,
-      "description": "Product Description",
+      "description": "-",
       "type": "pc"
     },
     {
-      "id": "2",
+      "id": "f59e",
       "productName": "Product 2",
-      "price": 100,
-      "quantityInStock": 10,
-      "description": "Product Description",
+      "price": "200",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "pc"
     },
     {
-      "id": "3",
+      "id": "45f4",
       "productName": "Product 3",
-      "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "price": 300,
+      "quantityInStock": 5,
+      "description": "-",
       "type": "pc"
     },
     {
-      "id": "4",
+      "id": "cbea",
       "productName": "Product 4",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "laptop"
     },
     {
-      "id": "5",
+      "id": "19d3",
       "productName": "Product 5",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "laptop"
     },
     {
-      "id": "6",
+      "id": "361f",
       "productName": "Product 6",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "laptop"
     },
     {
-      "id": "7",
+      "id": "d777",
       "productName": "Product 7",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "gadgets"
     },
     {
-      "id": "8",
+      "id": "2a0b",
       "productName": "Product 8",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "gadgets"
     },
     {
-      "id": "9",
+      "id": "a169",
       "productName": "Product 9",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "gadgets"
     },
     {
-      "id": "10",
+      "id": "0e91",
       "productName": "Product 10",
       "price": 100,
-      "quantityInStock": 0,
-      "description": "Product Description",
+      "quantityInStock": 5,
+      "description": "-",
       "type": "gadgets"
     }
   ]
