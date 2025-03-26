@@ -2,17 +2,7 @@
   "users": [],
   "carts": [
     {
-      "products": [
-        {
-          "id": "e535",
-          "productName": "Product 1",
-          "price": 2000,
-          "quantityInStock": 5,
-          "description": "-",
-          "type": "pc",
-          "amount": 1
-        }
-      ],
+      "products": [],
       "id": "1"
     }
   ],

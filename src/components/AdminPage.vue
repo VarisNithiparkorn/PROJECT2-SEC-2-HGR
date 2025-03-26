@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import ListModel from "./ListModel.vue";
-import { addItem, deleteItemById, getItems,editItem } from "@/libs/fetchUtils";
+import { addItem, deleteItemById, getItems, editItem } from "@/libs/fetchUtils";
 import ProductForm from "./ProductForm.vue";
 const products = ref([]);
 
@@ -15,12 +15,10 @@ const removeProduct = async (pid) => {
     products.value.splice(removeIndex, 1);
   }
 };
-const showAddProductForm = ref(true);
 
 onMounted(async () => {
   try {
     products.value = await getItems(`${import.meta.env.VITE_APP_URL}/products`);
-    console.log(products.value);
   } catch (error) {
     console.log(error);
   }
@@ -36,11 +34,11 @@ const addNewProduct = async (product) => {
       product
     );
     products.value.push(addedItem);
-    isAdding.value = true;
   } catch (error) {
     console.log(error);
   }
   isAdding.value = false;
+  currentProduct.value = {};
 };
 const updateProductInfo = async (product) => {
   try {
@@ -57,7 +55,7 @@ const updateProductInfo = async (product) => {
     console.log(error);
   }
   isEditing.value = false;
-  currentProduct.value = { productName: "", price: 0 };
+  currentProduct.value = {};
 };
 const setEditProduct = (product) => {
   currentProduct.value = product;
@@ -86,33 +84,39 @@ const setEditProduct = (product) => {
       <ListModel :items="products">
         <template #item="{ item: product }">
           <div
-            class="w-[900px] flex flex-col items-center border-2 mb-4 p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+            class="w-[900px] flex flex-col items-center border-2 mb-4 p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 max-sm:w-[300px] max-[769px]:w-[600px]"
           >
             <div class="flex w-full justify-between items-center mb-4">
               <div class="flex items-center">
                 <img
                   :src="`/ProductImages/product${product.id}.jpg`"
-                  class="w-24 h-24 max-sm:w-20 max-sm:h-20 rounded-md"
+                  class="w-24 h-24 max-sm:w-20 max-sm:h-20 rounded-md max-sm:-ml-3"
                 />
                 <div class="ml-4">
-                  <h1 class="text-xl font-semibold">{{ product.productName }}</h1>
+                  <h1 class="text-xl font-semibold max-sm:text-lg">
+                    {{ product.productName }}
+                  </h1>
                   <p class="text-sm text-gray-600">ID: {{ product.id }}</p>
-                  <p class="text-sm text-gray-600">Price: ${{ product.price }}</p>
-                  <p class="text-sm text-gray-600">In Stock: {{ product.quantityInStock }}</p>
-                  <p class="text-sm text-gray-600">Type: {{ product.type}}</p>
+                  <p class="text-sm text-gray-600">
+                    Price: ${{ product.price }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    In Stock: {{ product.quantityInStock }}
+                  </p>
+                  <p class="text-sm text-gray-600">Type: {{ product.type }}</p>
                 </div>
               </div>
 
               <div class="flex flex-col items-center">
                 <button
-                  class="btn btn-active w-full mb-2"
+                  class="btn btn-active w-full mb-2 max-sm:w-15 max-sm:h-8 max-sm:text-[11px]"
                   @click="setEditProduct(product)"
                 >
                   Edit
                 </button>
                 <label
                   :for="`modal_${product.id}`"
-                  class="btn bg-red-500 w-full"
+                  class="btn bg-red-500 w-full max-sm:w-15 max-sm:h-8 max-sm:text-[11px]"
                 >
                   Remove
                 </label>
@@ -132,12 +136,13 @@ const setEditProduct = (product) => {
                 </p>
                 <div class="modal-action">
                   <label :for="`modal_${product.id}`" class="btn">Cancel</label>
-                  <button
+                  <label
+                    :for="`modal_${product.id}`"
                     class="btn btn-error"
                     @click="removeProduct(product.id)"
                   >
                     Confirm
-                  </button>
+                  </label>
                 </div>
               </div>
             </div>
@@ -147,4 +152,3 @@ const setEditProduct = (product) => {
     </div>
   </div>
 </template>
-
