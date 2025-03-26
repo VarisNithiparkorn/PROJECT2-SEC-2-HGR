@@ -12,7 +12,6 @@ const props = defineProps({
 });
 
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
-const productUrl = `${import.meta.env.VITE_APP_URL}/products`
 const addItemToCart = async (item) => {
   try {
     console.log("Adding item to cart:", item);
@@ -30,15 +29,8 @@ const addItemToCart = async (item) => {
       } else {
         cart.products.push(cartItem);
       }
-      const updatedProduct = {
-        ...item,
-        quantityInStock: item.quantityInStock - 1
-      };
       const updatedCart = await updateItem(cartUrl, cartId, { products: cart.products });
-      const decreasedStock = await updateItem(productUrl, item.id, updatedProduct);
-      
       console.log("Item added to cart:", updatedCart);
-      console.log("Stock decreased:", decreasedStock);
       emit("cartUpdated");
     } else {
       console.log("NO STOCK");
