@@ -4,14 +4,13 @@ import { ref, computed } from "vue";
 export const useCarts = defineStore("carts", () => {
   const carts = ref([]);
 
-  const initCart = (cart,userId) => {
-    carts.value.filter(c =>{
-      if(c.id === userId){
-      c.push(cart)
-    }   
-    })
-     
-
+  const initCart = (cart) => {
+    const existingCartIndex = carts.value.findIndex((c) => c.id === cart.id);   
+    if (existingCartIndex === -1) {
+      carts.value.push(cart);
+    } else {
+      carts.value[existingCartIndex] = cart;
+    }
   };
   const calculateTotalPrice = computed(() => {
     return carts.value.reduce((price, cart) => {
