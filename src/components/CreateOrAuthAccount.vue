@@ -49,7 +49,6 @@ async function register() {
             if(cart === null || cart === undefined){
               cart = await addItem(url+'/carts', {products:[],id:loginUser.value.id})
             }
-            console.log(cart)
         }
     }else if(!isLogin.value){
         const newAccount = {}
