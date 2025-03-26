@@ -3,7 +3,6 @@ import { ref } from 'vue';
 import { defineEmits } from 'vue';
 import CreateOrAuthAccount from './CreateOrAuthAccount.vue';
 import AccountInfo from './AccountInfo.vue';
-import { onUpdated } from 'vue';
 
 const emit = defineEmits((['successAuth']))
 const currentAccount = ref({})

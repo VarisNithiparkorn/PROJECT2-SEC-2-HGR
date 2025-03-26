@@ -23,6 +23,7 @@ const routes = [
         component:Payment,
         props: true
     },
+    
 ]
 
 const router = createRouter({history,routes})
