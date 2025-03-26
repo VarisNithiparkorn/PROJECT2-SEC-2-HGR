@@ -8,14 +8,18 @@ const props = defineProps({
   item: {
     type: Object,
     required: true
-  }
+  },
+  userId: {
+    type: Number,
+    required: true
+  },
 });
 
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
 const addItemToCart = async (item) => {
   try {
     console.log("Adding item to cart:", item);
-    const cartId = 1;
+    const cartId = props.userId;
     const cartItem = {
       ...item,
       amount: 1 

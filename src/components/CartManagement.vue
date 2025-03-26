@@ -4,9 +4,10 @@ import ListCartItem from "./ListCartItem.vue";
 import { editItem, getItemById, updateItem } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
+import { onUpdated } from "vue";
 const myCart = useCarts();
 const { initCart, updateProductInCart } = myCart;
-const { carts, calculateTotalPrice } = storeToRefs(myCart);
+const { calculateTotalPrice } = storeToRefs(myCart);
 const emit = defineEmits(["editCart"]);
 const props = defineProps({
   userId: {
@@ -91,17 +92,19 @@ const isCartEmpty = computed(() => {
   return calculateTotalPrice.value <= 0;
 });
 
+const carts =ref([])
 onMounted(async () => {
   try {
     const cart = await getItemById(
       `${import.meta.env.VITE_APP_URL}/carts`,
       props.userId
     );
-    initCart(cart);
+    carts.value.push(cart)
   } catch (error) {
     console.log(error);
   }
 });
+
 </script>
 
 <template>

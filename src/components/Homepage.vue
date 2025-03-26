@@ -1,6 +1,6 @@
 <script setup>
 import Header from "./Header.vue";
-import ProductSection from "./ProductSection.vue";
+import ProductSection from "./productSection.vue";
 import { onMounted, ref } from "vue";
 import { getItems } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
@@ -49,5 +49,5 @@ onMounted(async () => {
 
 <template>
   <Header :userId="props.userId" :cartItemCount="cartItemCount" />
-  <ProductSection :item="carts" @cartUpdated="cartUpdated" />
+  <productSection :item="carts" :userId="props.userId" @cartUpdated="cartUpdated" />
 </template>

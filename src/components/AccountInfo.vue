@@ -1,4 +1,7 @@
 <script setup>
+import { onMounted } from 'vue';
+import ListModel from './ListModel.vue';
+import { ref } from 'vue';
 
 </script>
 <template>
@@ -7,7 +10,7 @@
 
         </div>
         <div class=" w-full h-[50%] border">
-
+            
         </div>
     </div>
 </template>
