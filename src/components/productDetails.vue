@@ -11,6 +11,16 @@ onMounted(async () => {
   const productUrl = `${import.meta.env.VITE_APP_URL}/products`;
   product.value = await getItemById(productUrl, productId);
 });
+
+const getProductImage = (type) => {
+  const imageMap = {
+    pc: 'product1.jpg',
+    laptop: 'product2.jpg',
+    gadgets: 'product3.jpg'
+  };
+  return imageMap[type];
+};
+
 </script>
 
 <template>
@@ -20,7 +30,7 @@ onMounted(async () => {
   <div class="flex items-center justify-center" v-if="product">
     <div class="w-full max-w-6xl md:grid md:grid-cols-2 flex flex-wrap justify-center p-4">
       <div class="flex justify-center items-center col-1">
-        <img class="w-auto h-90" :src="product.image" :alt="product.productName">
+        <img class="w-90 h-90" :src="`/public/ProductImages/${getProductImage(product.type)}`" :alt="product.productName">
       </div>
       <div class="col-2 flex flex-col justify-center">
         <h2 class="text-xl font-semibold mb-2 text-black">{{ product.productName }}</h2>
