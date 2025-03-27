@@ -32,7 +32,6 @@
   <tr>
     <td>66130500105 Varis Nithiparkorn </td>
     <td> - Create User Account<br>
-    - Create session cookie after user login<br>
     - Login if user already have an account<br>
     - User can edit own information like address, name, phone and email</td>
   </tr>
@@ -68,7 +67,7 @@
     <td> - Ui design in Loginform<br> - event click and input handler in inputField<br>   </td>
     <td> - update responsive login ui<br> -Ui design sign up form<br> -add UserRegister and sign up component</td>
     <td> - CreateOrAuthAccount component use to create and auth input of user<br> -logic to validate input from user </td>
-    <td> </td>
+    <td> - Add profile page<br> - add feature edit account info in profile page<br> - add router path in login page and profile page</td>
   </tr>
   <tr>
     <td>66130500109<br> Kritsada Atchariyapruk</td>
