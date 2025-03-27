@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps,  ref,   computed, onMounted, onMounted } from 'vue';
+import { defineProps,  ref,   computed, onMounted } from 'vue';
 import { getItems, getItemById,  updateItem } from "@/libs/fetchUtils"
 import { useCarts } from '@/stores/Carts';
 

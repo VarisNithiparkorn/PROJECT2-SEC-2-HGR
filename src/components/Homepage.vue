@@ -8,8 +8,8 @@ import { storeToRefs } from "pinia";
 
 const myCart = useCarts();
 const { carts } = storeToRefs(myCart);
-import ProductSection from "./productSection.vue";
-import { onMounted, ref } from "vue";
+
+
 
 const props = defineProps({
   userId: {
