@@ -1,6 +1,8 @@
 <script setup>
 import { getItems } from "@/libs/fetchUtils";
 import { computed, onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter()
 const props = defineProps({
   navBar: {
     validator(value) {
@@ -43,6 +45,10 @@ onMounted(async () => {
     console.log(error);
   }
 });
+function gotoProfile() {
+  const uid = props.userId
+  router.push({name:'Profile', params:{userId:uid}})
+}
 </script>
 
 <template>
@@ -139,9 +145,12 @@ onMounted(async () => {
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-36 p-2 shadow"
         >
-          <li><a> Profile </a></li>
+        
+          <li><a @click="gotoProfile"> Profile </a></li>
           <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <router-link to='/'>
+            <li><a>Logout</a></li>
+          </router-link>
         </ul>
       </div>
     </div>
