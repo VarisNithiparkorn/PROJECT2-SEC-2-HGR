@@ -1,9 +1,9 @@
 <script setup>
 import { getItems } from "@/libs/fetchUtils";
 import { computed, onMounted, ref } from "vue";
-
 import { useRouter } from "vue-router";
-const router = useRouter()
+
+const router = useRouter();
 
 const emit = defineEmits(["searchProduct"]);
 
@@ -15,7 +15,7 @@ const props = defineProps({
     default: "show",
   },
   userId: {
-    type: Number,
+    type: String,
     required: true,
   },
   cartItemCount: {
@@ -23,49 +23,43 @@ const props = defineProps({
     required: true,
   },
 });
+
 const searchText = ref("");
 const products = ref([]);
 const productName = ref([]);
 
 const searchMatch = computed(() => {
   return productName.value.filter((p) => {
-    if (
-      p.charAt(0).toLowerCase() === searchText.value.charAt(0).toLowerCase()
-    ) {
-      return p.toLowerCase().includes(searchText.value.toLowerCase());
-    }
+    return p.toLowerCase().includes(searchText.value.toLowerCase());
   });
 });
+
 const showDropdown = ref(false);
+
 onMounted(async () => {
   try {
     const product = await getItems(`${import.meta.env.VITE_APP_URL}/products`);
     products.value = Array.isArray(product) ? product : [product];
-    for (const product of products.value) {
-      productName.value.push(product.productName);
-    }
+    productName.value = products.value.map((product) => product.productName);
   } catch (error) {
     console.log(error);
   }
 });
 
 function gotoProfile() {
-  const uid = props.userId
-  router.push({name:'Profile', params:{userId:uid}})
+  const uid = props.userId;
+  router.push({ name: "Profile", params: { userId: uid } });
 }
 
-const searchValue = () => {
-  if (searchMatch.value.length > 0) {
-    emit("searchProduct", searchMatch.value);
-  } else if (searchText.value.trim() !== "") {
-    emit("searchProduct", searchText.value);
+const searchValue = (selectedText = "") => {
+  const valueToSearch =
+    typeof selectedText === "string" ? selectedText : searchText.value.trim();
+  if (valueToSearch !== "") {
+    emit("searchProduct", valueToSearch);
   }
   searchText.value = "";
   showDropdown.value = false;
-
 };
-
-
 </script>
 
 <template>
@@ -79,7 +73,6 @@ const searchValue = () => {
     <div class="pl-6" v-show="navBar === 'show'">
       <slot name="logo" class="btn btn-ghost text-xl">Logo</slot>
     </div>
-    <!-- search bar -->
     <div class="flex-1 flex justify-center">
       <input
         type="text"
@@ -91,12 +84,15 @@ const searchValue = () => {
             : 'max-sm:w-72 max-sm:h-9 max-md:w-72 max-lg:w-96 '
         "
         v-model="searchText"
-         @focus="showDropdown = true"
+        @focus="showDropdown = true"
         @keyup.enter="searchValue"
       />
       <div
         v-show="searchText.length && showDropdown"
-        @click="showDropdown = false ;searchText = ''"
+        @click="
+          showDropdown = false;
+          searchText = '';
+        "
         class="absolute top-14 w-[530px] bg-white text-black"
         :class="
           navBar === 'show'
@@ -118,7 +114,6 @@ const searchValue = () => {
       </div>
     </div>
     <div class="flex-none flex items-center">
-      <!-- cart -->
       <div
         class="dropdown dropdown-end mr-3 max-2xl:mr-5 max-sm:mr-1"
         v-show="navBar === 'show'"
@@ -147,7 +142,6 @@ const searchValue = () => {
           </div>
         </router-link>
       </div>
-      <!-- profile -->
       <div class="dropdown dropdown-end mr-5" v-show="navBar === 'show'">
         <div
           tabindex="0"
@@ -165,10 +159,9 @@ const searchValue = () => {
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-36 p-2 shadow"
         >
-        
           <li><a @click="gotoProfile"> Profile </a></li>
           <li><a>Settings</a></li>
-          <router-link to='/'>
+          <router-link to="/">
             <li><a>Logout</a></li>
           </router-link>
         </ul>
