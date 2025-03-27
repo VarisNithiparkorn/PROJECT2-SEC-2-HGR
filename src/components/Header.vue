@@ -1,8 +1,12 @@
 <script setup>
 import { getItems } from "@/libs/fetchUtils";
 import { computed, onMounted, ref } from "vue";
+
 import { useRouter } from "vue-router";
 const router = useRouter()
+
+const emit = defineEmits(["searchProduct"]);
+
 const props = defineProps({
   navBar: {
     validator(value) {
@@ -32,8 +36,7 @@ const searchMatch = computed(() => {
     }
   });
 });
-
-
+const showDropdown = ref(false);
 onMounted(async () => {
   try {
     const product = await getItems(`${import.meta.env.VITE_APP_URL}/products`);
@@ -45,10 +48,24 @@ onMounted(async () => {
     console.log(error);
   }
 });
+
 function gotoProfile() {
   const uid = props.userId
   router.push({name:'Profile', params:{userId:uid}})
 }
+
+const searchValue = () => {
+  if (searchMatch.value.length > 0) {
+    emit("searchProduct", searchMatch.value);
+  } else if (searchText.value.trim() !== "") {
+    emit("searchProduct", searchText.value);
+  }
+  searchText.value = "";
+  showDropdown.value = false;
+
+};
+
+
 </script>
 
 <template>
@@ -74,9 +91,12 @@ function gotoProfile() {
             : 'max-sm:w-72 max-sm:h-9 max-md:w-72 max-lg:w-96 '
         "
         v-model="searchText"
+         @focus="showDropdown = true"
+        @keyup.enter="searchValue"
       />
       <div
-        v-show="searchText.length"
+        v-show="searchText.length && showDropdown"
+        @click="showDropdown = false ;searchText = ''"
         class="absolute top-14 w-[530px] bg-white text-black"
         :class="
           navBar === 'show'
@@ -90,9 +110,9 @@ function gotoProfile() {
             :key="matchText"
             class="hover:bg-gray-200 pt-1 pb-1 pl-3"
           >
-            <a href=""
-              ><p>{{ matchText }}</p></a
-            >
+            <button @click="$emit('searchProduct', matchText)">
+              {{ matchText }}
+            </button>
           </li>
         </ul>
       </div>

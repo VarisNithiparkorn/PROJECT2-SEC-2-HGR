@@ -139,7 +139,7 @@
   "products": [
     {
       "id": "e535",
-      "productName": "Product 1",
+      "productName": "Computer 1",
       "price": 2000,
       "quantityInStock": 5,
       "description": "-",
@@ -147,7 +147,7 @@
     },
     {
       "id": "f59e",
-      "productName": "Product 2",
+      "productName": "Computer 2",
       "price": "200",
       "quantityInStock": 5,
       "description": "-",
@@ -155,7 +155,7 @@
     },
     {
       "id": "45f4",
-      "productName": "Product 3",
+      "productName": "Computer 3",
       "price": 300,
       "quantityInStock": 5,
       "description": "-",
@@ -163,7 +163,7 @@
     },
     {
       "id": "cbea",
-      "productName": "Product 4",
+      "productName": "Laptop 4",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",
@@ -171,7 +171,7 @@
     },
     {
       "id": "19d3",
-      "productName": "Product 5",
+      "productName": "Laptop 5",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",
@@ -179,7 +179,7 @@
     },
     {
       "id": "361f",
-      "productName": "Product 6",
+      "productName": "Laptop 6",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",
@@ -187,7 +187,7 @@
     },
     {
       "id": "d777",
-      "productName": "Product 7",
+      "productName": "Gadgets 7",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",
@@ -195,7 +195,7 @@
     },
     {
       "id": "2a0b",
-      "productName": "Product 8",
+      "productName": "Gadgets 8",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",
@@ -203,7 +203,7 @@
     },
     {
       "id": "a169",
-      "productName": "Product 9",
+      "productName": "Gadgets 9",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",
@@ -211,7 +211,7 @@
     },
     {
       "id": "0e91",
-      "productName": "Product 10",
+      "productName": "Gadgets 10",
       "price": 100,
       "quantityInStock": 5,
       "description": "-",

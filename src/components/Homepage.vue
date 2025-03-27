@@ -1,7 +1,7 @@
 <script setup>
 import Header from "./Header.vue";
 import productSection from "./productSection.vue";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { getItems } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
@@ -41,11 +41,27 @@ const cartUpdated = async () => {
     console.error(error);
   }
 };
+const products = ref([]);
+const matchProduct = ref([]);
 
+const searchProduct = (searchValues) => {
+  matchProduct.value = [];
+  searchValues.forEach((searchValue) => {
+    products.value.filter((p) => {
+      if (p.productName.toLowerCase().includes(searchValue.toLowerCase())) {
+        matchProduct.value.push(p);
+      }
+    });
+  });
+};
 onMounted(async () => {
   try {
-    const items = await getItems(`${import.meta.env.VITE_APP_URL}/carts`);
-    carts.value = Array.isArray(items) ? items : [items];
+    const getCarts = await getItems(`${import.meta.env.VITE_APP_URL}/carts`);
+    carts.value = Array.isArray(getCarts) ? getCarts : [getCarts];
+    const getProducts = await getItems(
+      `${import.meta.env.VITE_APP_URL}/products`
+    );
+    products.value = Array.isArray(getProducts) ? getProducts : [getProducts];
     calculateCartTotal();
   } catch (error) {
     console.error(error);
@@ -54,7 +70,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header :userId="props.userId" :cartItemCount="cartItemCount" />
+  <Header
+    :userId="props.userId"
+    :cartItemCount="cartItemCount"
+    @searchProduct="searchProduct"
+  />
   <productSection
     :item="carts"
     :userId="props.userId"
