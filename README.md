@@ -74,7 +74,7 @@
     <td>- Header component </td>
     <td>- 3 Cart components for cart page  <br>- Update header search bar search by product name from db </td>
     <td>- Admin page (listing product,remove product)<br>- Payment page <br>- Update 3 cart components<br>- Add Home page<br>- Add router to home,cart,payment page </td>
-    <td> </td>
+    <td>- Admin page(add,edit)<br>- update search bar<br>- add cart&product state<br>- update cart component</td>
   </tr>
   <tr>
     <td>66130500124<br> Phusara Khadseela</td>
