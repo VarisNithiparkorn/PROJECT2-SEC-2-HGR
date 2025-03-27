@@ -5,14 +5,16 @@ import { onMounted, ref } from "vue";
 import { getItems } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
+
 const myCart = useCarts();
 const { carts } = storeToRefs(myCart);
 const props = defineProps({
   userId: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
+
 
 const cartItemCount = ref(0);
 

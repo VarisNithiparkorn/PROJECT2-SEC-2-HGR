@@ -2,13 +2,14 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/components/Homepage.vue";
 import Payment from "@/components/Payment.vue";
 import CartManagement from "@/components/CartManagement.vue";
-import CreateOrAuthAccount from "@/components/CreateOrAuthAccount.vue";
+import Register from "@/components/AccountRegister.vue";
+import Profile from "@/components/AccountProfile.vue";
 const history = createWebHistory()
 const routes = [
     {
-        path:'/login',
-        name:'Login',
-        component:CreateOrAuthAccount,
+        path:'/',
+        name:'Register',
+        component: Register,
         props: true
     },
     {
@@ -28,6 +29,12 @@ const routes = [
         path:'/cart/payment',
         name:'Payment',
         component:Payment,
+        props: true
+    },
+    {
+        path:'/profile/:userId',
+        name:'Profile',
+        component: Profile,
         props: true
     },
 
