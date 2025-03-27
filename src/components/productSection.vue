@@ -1,16 +1,17 @@
 <script setup>
-import { defineProps, ref, computed, onMounted } from 'vue';
-import { getItems, getItemById, updateItem } from "@/libs/fetchUtils"
+import { defineProps,  ref,   computed, onMounted, onMounted } from 'vue';
+import { getItems, getItemById,  updateItem } from "@/libs/fetchUtils"
+import { useCarts } from '@/stores/Carts';
 import { useCarts } from '@/stores/Carts';
 
 const data = ref([]);
 const emit = defineEmits();
 
 const props = defineProps({
-  productseach: {
-    type: Array,
-    required: false,
-  },
+  item: {
+    type: Object,
+    required: true
+  }
 });
 
 
