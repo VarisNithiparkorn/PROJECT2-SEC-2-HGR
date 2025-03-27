@@ -1,23 +1,21 @@
 <script setup>
-import { defineProps, ref, watch, computed, onMounted } from 'vue';
-import { getItemById, updateItem } from "@/libs/fetchUtils"
+import { defineProps, ref, computed, onMounted } from 'vue';
+import { getItems, getItemById, updateItem } from "@/libs/fetchUtils"
 import { useCarts } from '@/stores/Carts';
-import dataFile from '../../data/db.json';
-const data = ref(dataFile.products)
+
+const data = ref([]);
 const emit = defineEmits();
+
 const props = defineProps({
-  item: {
-    type: Object,
-    required: true
-  },
-  userId: {
-    type: Number,
-    required: true
+  productseach: {
+    type: Array,
+    required: false,
   },
 });
 
-const cartsStore = useCarts();
 
+const cartsStore = useCarts();
+const { initCart, updateProductInCart } = cartsStore;
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
 const addItemToCart = async (item) => {
   try {
@@ -37,7 +35,7 @@ const addItemToCart = async (item) => {
         cart.products.push(cartItem);
       }
       const updatedCart = await updateItem(cartUrl, cartId, { products: cart.products });
-      cartsStore.updateProductInCart(cartId, updatedCart);
+      updateProductInCart(cartId, updatedCart);
       console.log("Item added to cart:", updatedCart);
       emit("cartUpdated");
     } else {
@@ -45,6 +43,16 @@ const addItemToCart = async (item) => {
     }
   } catch (error) {
     console.error("Failed to add item to cart:", error);
+  }
+};
+
+const productsUrl = `${import.meta.env.VITE_APP_URL}/products`;
+const fetchProducts = async () => {
+  try {
+    const products = await getItems(productsUrl);
+    data.value = products;
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
   }
 };
 
@@ -75,8 +83,9 @@ const sortedProducts = computed(() => {
 });
 
 onMounted(async () => {
+  await fetchProducts();
   const cart = await getItemById(cartUrl, 1);
-  cartsStore.initCart(cart);
+  initCart(cart);
 });
 </script>
 
@@ -118,7 +127,11 @@ onMounted(async () => {
 </div>
 
   <div class="flex flex-wrap gap-4 flex-1 pl-2 pt-10">
-    <div class="flex h-46 w-42 bg-white text-black border-solid border-red-500 border-2" v-for="item in sortedProducts" :key="item.id">
+    <div v-if="sortedProducts.length === 0" class="text-center w-full">
+      No products available
+    </div>
+    <div v-else class="flex h-46 w-42 bg-white text-black border-solid border-red-500 border-2" 
+         v-for="item in sortedProducts" :key="item.id">
       <div class="text-center">
         <p class="text-lg">{{ item.productName }}</p>
         <p class="text-base">price: {{ item.price }}</p>

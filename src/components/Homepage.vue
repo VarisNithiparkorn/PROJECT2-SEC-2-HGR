@@ -8,13 +8,15 @@ import { storeToRefs } from "pinia";
 
 const myCart = useCarts();
 const { carts } = storeToRefs(myCart);
+import ProductSection from "./productSection.vue";
+import { onMounted, ref } from "vue";
+
 const props = defineProps({
   userId: {
     type: String,
     required: true,
   },
 });
-
 
 const cartItemCount = ref(0);
 
@@ -58,4 +60,6 @@ onMounted(async () => {
     :userId="props.userId"
     @cartUpdated="cartUpdated"
   />
+  <ProductSection @cartUpdated="cartUpdated" />
+
 </template>
