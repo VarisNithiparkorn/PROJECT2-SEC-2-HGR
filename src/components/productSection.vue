@@ -1,6 +1,6 @@
 <script setup>
-import { defineProps, ref, computed, onMounted } from 'vue';
-import { getItems, getItemById, updateItem } from "@/libs/fetchUtils"
+import { defineProps,  ref,   computed, onMounted, onMounted } from 'vue';
+import { getItems, getItemById,  updateItem } from "@/libs/fetchUtils"
 import { useCarts } from '@/stores/Carts';
 
 const data = ref([]);
@@ -14,6 +14,7 @@ const props = defineProps({
 });
 
 const cartsStore = useCarts();
+const { initCart, updateProductInCart } = cartsStore;
 const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
 const addItemToCart = async (item) => {
   try {
