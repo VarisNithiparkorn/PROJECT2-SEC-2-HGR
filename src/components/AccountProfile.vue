@@ -1,7 +1,6 @@
 <script setup>
 import { getItemByFieldName, getItemById, updateItem } from '@/libs/fetchUtils';
 import { onBeforeUpdate, onMounted, onUnmounted, watch } from 'vue';
-import { defineEmits } from 'vue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 const selectedField =  ref('')

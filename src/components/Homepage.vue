@@ -1,16 +1,17 @@
 <script setup>
 import Header from "./Header.vue";
-import productSection from "./productSection.vue";
-import { onMounted, ref } from "vue";
+import ProductSection from "./productSection.vue";
+import { computed, onMounted, ref } from "vue";
 import { getItems } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
+import { useProducts } from "@/stores/Products";
 import { storeToRefs } from "pinia";
 
-const myCart = useCarts();
-const { carts } = storeToRefs(myCart);
-
-
-
+const myCarts = useCarts();
+const myProducts = useProducts();
+const { carts } = storeToRefs(myCarts);
+const { products } = storeToRefs(myProducts);
+const emit = defineEmits(["login"]);
 const props = defineProps({
   userId: {
     type: String,
@@ -42,10 +43,31 @@ const cartUpdated = async () => {
   }
 };
 
+const searchQuery = ref("");
+
+const filteredProducts = computed(() => {
+  if (!products.value) return [];
+  const search = (
+    Array.isArray(searchQuery.value) ? searchQuery.value : [searchQuery.value]
+  ).map((text) => String(text).toLowerCase());
+
+  return products.value.filter((product) => {
+    const matchSearch =
+      !search.length ||
+      search.some((text) => product.productName.toLowerCase().includes(text));
+    return matchSearch;
+  });
+});
+
+const searchProduct = (searchValue) => {
+  searchQuery.value = searchValue;
+};
+
 onMounted(async () => {
   try {
-    const items = await getItems(`${import.meta.env.VITE_APP_URL}/carts`);
-    carts.value = Array.isArray(items) ? items : [items];
+    const getCarts = await getItems(`${import.meta.env.VITE_APP_URL}/carts`);
+    carts.value = Array.isArray(getCarts) ? getCarts : [getCarts];
+
     calculateCartTotal();
   } catch (error) {
     console.error(error);
@@ -54,12 +76,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Header :userId="props.userId" :cartItemCount="cartItemCount" />
-  <productSection
-    :item="carts"
+  <Header
+    :userId="props.userId"
+    :cartItemCount="cartItemCount"
+    @searchProduct="searchProduct"
+  />
+  <ProductSection
+    :searchProduct="filteredProducts"
     :userId="props.userId"
     @cartUpdated="cartUpdated"
   />
-  <ProductSection @cartUpdated="cartUpdated" />
-
 </template>
