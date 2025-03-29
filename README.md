@@ -47,7 +47,6 @@
     <td> - การแสดงข้อมูลสินค้า  <br>
     - List สินค้าในหน้า Home <br>
     - Filler สินค้า <br>
-    - Rating สินค้า
 </td>
   </tr>
 </table>
@@ -81,6 +80,8 @@
     <td>- List Product Function </td>
     <td>- Filter UI <br> - Simple Check Filter Function </td>
     <td>- Product Detail UI <br> - Filter Function <br> - Add to cart Function </td>
-    <td> </td>
+    <td>- Update function add to cart <br>
+-Add rounter to ProductDetail <br> - Update productSection.vue to use store form cart <br> - Add mapping image file for productdetail
+ </td>
   </tr>
 </table>
