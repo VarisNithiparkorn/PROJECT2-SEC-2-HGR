@@ -24,18 +24,26 @@ const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
 const addItemToCart = async (item) => {
   try {
     const cartId = props.userId;
-    const cartItem = {
-      ...item,
-      amount: 1,
-    };
     const cart = await getItemById(cartUrl, cartId);
     const existingProductIndex = cart.products.findIndex(
       (p) => p.id === item.id
     );
-
     if (existingProductIndex !== -1) {
+      const currentAmount = cart.products[existingProductIndex].amount;
+      if (currentAmount >= item.quantityInStock) {
+        alert("Cannot add more items - Maximum stock reached!");
+        return;
+      }
       cart.products[existingProductIndex].amount += 1;
     } else {
+      if (item.quantityInStock <= 0) {
+        alert("This item is out of stock!");
+        return;
+      }
+      const cartItem = {
+        ...item,
+        amount: 1,
+      };
       cart.products.push(cartItem);
     }
 
@@ -171,11 +179,13 @@ onMounted(async () => {
           :key="item.id"
           class="bg-white rounded-xl shadow-md p-4 text-center hover:shadow-lg transition"
         >
+        <div class="flex justify-center">
           <img
              :src="`/ProductImages/${item.id}.jpg`"
             alt="Product Image"
-            class="w-full h-40 object-cover rounded-md mb-3 bg-center bg-cover"
+            class="w-auto h-40 object-cover rounded-md mb-3 bg-center bg-cover"
           />
+        </div>
           <h3 class="text-lg font-semibold text-gray-800">
             {{ item.productName }}
           </h3>

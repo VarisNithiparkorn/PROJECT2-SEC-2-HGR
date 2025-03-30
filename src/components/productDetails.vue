@@ -1,10 +1,59 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { getItemById } from "@/libs/fetchUtils";
+import { getItemById, updateItem } from "@/libs/fetchUtils";
+
+const props = defineProps({
+  userId: {
+    type: String,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["cartUpdated"]);
 
 const route = useRoute();
 const product = ref(null);
+
+const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
+
+const addItemToCart = async (item) => {
+  try {
+    const cartId = props.userId;
+    const cart = await getItemById(cartUrl, cartId);
+    const existingProductIndex = cart.products.findIndex(
+      (p) => p.id === item.id
+    );
+    if (existingProductIndex !== -1) {
+      const currentAmount = cart.products[existingProductIndex].amount;
+      if (currentAmount >= item.quantityInStock) {
+        alert("Cannot add more items - Maximum stock reached!");
+        return;
+      }
+      cart.products[existingProductIndex].amount += 1;
+      alert("Added one more to cart!");
+    } else {
+      if (item.quantityInStock <= 0) {
+        alert("This item is out of stock!");
+        return;
+      }
+      const cartItem = {
+        ...item,
+        amount: 1,
+      };
+      cart.products.push(cartItem);
+      alert("Added to cart!");
+    }
+
+    const updatedCart = await updateItem(cartUrl, cartId, {
+      products: cart.products,
+    });
+    emit("cartUpdated");
+  } catch (error) {
+    console.error("Failed to add item to cart:", error);
+    alert("Failed to add item to cart");
+  }
+};
 
 onMounted(async () => {
   const productId = route.params.id;
@@ -12,16 +61,7 @@ onMounted(async () => {
   product.value = await getItemById(productUrl, productId);
 });
 
-const getProductImage = (type) => {
-  const imageMap = {
-    pc: "product1.jpg",
-    laptop: "product2.jpg",
-    gadgets: "product3.jpg",
-  };
-  return imageMap[type];
-};
 </script>
-
 <template>
   <router-link :to="{ name: 'Home' }">
     <button class="text-xl p-4 cursor-pointer" @click="back">Back</button>
@@ -52,10 +92,10 @@ const getProductImage = (type) => {
           <span class="text-gray-500">${{ product.price }}</span>
         </div>
         <div class="mt-6 flex flex-wrap max-md:justify-center">
-          <button class="bg-blue-500 text-white px-4 py-2 rounded">
-            Buy Now
-          </button>
-          <button class="ml-2 bg-gray-300 text-gray-700 px-4 py-2 rounded">
+          <button 
+            class="bg-blue-500 text-white px-4 py-2 rounded"
+            @click="addItemToCart(product)"
+          >
             Add to Cart
           </button>
         </div>
