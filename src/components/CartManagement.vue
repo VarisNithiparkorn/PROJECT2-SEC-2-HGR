@@ -109,7 +109,7 @@ onMounted(async () => {
     console.log(error);
   }
 });
-
+const total = calculateTotalPrice.value.toLocaleString()
 
 </script>
 
@@ -140,7 +140,7 @@ onMounted(async () => {
         class="w-[1190px] max-lg:w-[650px] max-2xl:w-[900px] -mt-4 flex justify-end max-sm:w-[300px] max-xl:w-[900px]"
       >
         <p class="text-lg font-bold max-sm:mr-2">
-          Total Price : ฿ {{ calculateTotalPrice }}
+          Total Price : ฿ {{ total }}
         </p>
       </div>
     </div>

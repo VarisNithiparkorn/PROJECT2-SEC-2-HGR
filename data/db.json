@@ -45,6 +45,24 @@
           "description": "MOUSE LOGITECH G PRO-X SUPERLIGHT 2 - (BLACK)",
           "type": "mouse",
           "amount": 2
+        },
+        {
+          "id": "2165",
+          "productName": "MSI SWORD16 HX",
+          "price": 39990,
+          "quantityInStock": 2,
+          "description": "NOTEBOOK MSI SWORD16 HX B14VEKG-1023TH - COSMOS GRAY",
+          "type": "laptop",
+          "amount": 1
+        },
+        {
+          "id": "45f4",
+          "productName": "MSI Modern AM272P",
+          "price": 22490,
+          "quantityInStock": 1,
+          "description": "AIO MSI Modern AM272P 1M-829TH (White)",
+          "type": "pc",
+          "amount": 1
         }
       ],
       "id": "4bfa"
