@@ -4,13 +4,15 @@ import { getItemById, editItem } from "@/libs/fetchUtils";
 import ListCartItem from "./ListCartItem.vue";
 import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const myCart = useCarts();
 const { initCart, updateProductInCart } = myCart;
 const { carts } = storeToRefs(myCart);
 const props = defineProps({
   userId: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
@@ -19,7 +21,7 @@ const users = ref([]);
 const userAddress = computed(() => {
   let address;
   users.value.find((u) => {
-    if (Number(u.id) === props.userId) {
+    if (u.id === props.userId) {
       address = u.address;
     }
   });
@@ -31,14 +33,21 @@ const buyProducts = async () => {
   try {
     const cart = carts.value.find((c) => c.id);
     const cartId = cart.id;
-    const emptyCart = await editItem(`${import.meta.env.VITE_APP_URL}/carts`, cartId, {
-      products: [],
-    });
-    updateProductInCart(cartId,emptyCart)
+    const emptyCart = await editItem(
+      `${import.meta.env.VITE_APP_URL}/carts`,
+      cartId,
+      {
+        products: [],
+      }
+    );
+    updateProductInCart(cartId, emptyCart);
     isCustomerBuyProducts.value = true;
   } catch (error) {
     console.log(error);
   }
+};
+const profileSetting = () => {
+  router.push({ name: "Profile", params: { userId: props.userId } });
 };
 onMounted(async () => {
   try {
@@ -66,9 +75,11 @@ onMounted(async () => {
       </router-link>
       <div class="w-full flex flex-col justify-center items-center">
         <div
-          class="flex border-2 w-[900px] h-[100px] mt-8 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px]"
+          class="flex justify-between border-2 w-[900px] h-[100px] mt-8 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px]"
         >
           <h1 class="p-5">{{ userAddress }}</h1>
+
+          <p class="cursor-pointer p-2 pr-4 underline text-blue-300" @click="profileSetting">edit</p>
         </div>
       </div>
       <div class="w-full flex flex-col justify-center items-center">
@@ -87,7 +98,7 @@ onMounted(async () => {
           class="max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] flex justify-end items-end mt-5 max-sm:mr-4 max-lg:m max-md:mr-20"
         >
           <button
-            class="btn btn-active btn-primary max-sm:w-16"
+            class="btn btn-active btn-primary max-sm:w-16 mb-5"
             @click="buyProducts"
           >
             Buy

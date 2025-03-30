@@ -9,7 +9,7 @@ const { initProduct } = myProducts;
 const props = defineProps({
   searchProduct: {
     type: Array,
-    default:  [],
+    default: [],
   },
   userId: {
     type: String,
@@ -85,104 +85,114 @@ onMounted(async () => {
     console.log(error);
   }
 });
-
 </script>
 
 <template>
-  <div class="flex h-auto w-auto">
-    <div class="w-60 h-auto bg-gradient-to-b from-blue-400 to-violet-800 p-4">
-      <p class="text-xl text-black underline underline-offset-8 decoration-2">
-        Filter
-      </p>
-
-      <div class="pt-4">
-        <select class="select" v-model="selectedCategory">
+  <div class="flex h-auto w-full">
+    <div
+      class="w-64 min-h-screen bg-gradient-to-b from-blue-600 to-violet-900 p-6 text-white shadow-lg
+      max-[1025px]:w-48 max-[769px]:w-44 max-[376px]:w-30"
+    >
+      <h2 class="text-xl font-semibold mb-6">Filter</h2>
+      <div class="mb-8">
+        <label class="block mb-2 font-medium">Category</label>
+        <select
+          class="w-full p-2 rounded-md text-black bg-white border border-gray-300 focus:outline-none"
+          v-model="selectedCategory"
+        >
           <option value="">All Categories</option>
           <option value="pc">PC</option>
           <option value="laptop">Laptop</option>
-          <option value="gadgets">Gadgets</option>
+          <option value="keyboard">Keyboard</option>
+          <option value="mouse">Mouse</option>
+          <option value="headset">Headset</option>
         </select>
       </div>
-
-      <div>
-        <p
-          class="text-xl text-black pt-3 pb-3 underline underline-offset-8 decoration-2"
-        >
-          Price Selection
-        </p>
-
-        <div class="pb-2">
+      <h2 class="text-xl font-semibold mb-4">Sort By</h2>
+      <div class="space-y-3">
+        <label class="flex items-center cursor-pointer">
           <input
             type="radio"
-            name="radio-1"
-            class="radio radio-neutral radio-xs mr-2"
-            id="hitolow"
+            name="sort"
+            class="mr-2 accent-white"
             value="hitolow"
             v-model="sortOption"
           />
-          <label class="text-black" for="hitolow">Highest to lowest</label>
-        </div>
-
-        <div class="pb-2">
+          Highest price
+        </label>
+        <label class="flex items-center cursor-pointer">
           <input
             type="radio"
-            name="radio-1"
-            class="radio radio-neutral radio-xs mr-2"
-            id="lowtohi"
+            name="sort"
+            class="mr-2 accent-white"
             value="lowtohi"
             v-model="sortOption"
           />
-          <label class="text-black" for="lowtohi">Lowest to highest</label>
-        </div>
-
-        <div class="pb-2">
+          Lowest price
+        </label>
+        <label class="flex items-center cursor-pointer">
           <input
             type="radio"
-            name="radio-1"
-            class="radio radio-neutral radio-xs mr-2"
-            id="histock"
+            name="sort"
+            class="mr-2 accent-white"
             value="histock"
             v-model="sortOption"
           />
-          <label class="text-black" for="histock">High quantity in stock</label>
-        </div>
-
-        <div class="pb-2">
+          Highest quantity in stock
+        </label>
+        <label class="flex items-center cursor-pointer">
           <input
             type="radio"
-            name="radio-1"
-            class="radio radio-neutral radio-xs mr-2"
-            id="lowstock"
+            name="sort"
+            class="mr-2 accent-white"
             value="lowstock"
             v-model="sortOption"
           />
-          <label class="text-black" for="lowstock">Low quantity in stock</label>
-        </div>
+          Lowest quantity in stock
+        </label>
       </div>
     </div>
-
-    <div class="flex flex-wrap gap-4 flex-1 pl-2 pt-10">
-      <div v-if="sortedProducts.length === 0" class="text-center w-full">
+    <div class="flex-1 p-6 bg-gray-50">
+      <div
+        v-if="sortedProducts.length === 0"
+        class="text-center text-gray-500 text-lg py-10"
+      >
         No products available
       </div>
-
       <div
         v-else
-        class="flex h-46 w-42 bg-white text-black border-solid border-red-500 border-2"
-        v-for="item in sortedProducts"
-        :key="item.id"
+        class="grid grid-cols-5 
+        max-[1025px]:grid-cols-3
+        max-[426px]:grid-cols-1"
+        
       >
-        <div class="text-center">
-          <p class="text-lg">{{ item.productName }}</p>
-          <p class="text-base">Price: ฿{{ item.price }}</p>
-          <p class="text-base pb-3">In stock: {{ item.quantityInStock }}</p>
-
-          <button @click="addItemToCart(item)" class="btn btn-soft btn-primary">
+        <div
+          v-for="item in sortedProducts"
+          :key="item.id"
+          class="bg-white rounded-xl shadow-md p-4 text-center hover:shadow-lg transition"
+        >
+          <img
+             :src="`/ProductImages/${item.id}.jpg`"
+            alt="Product Image"
+            class="w-full h-40 object-cover rounded-md mb-3 bg-center bg-cover"
+          />
+          <h3 class="text-lg font-semibold text-gray-800">
+            {{ item.productName }}
+          </h3>
+          <p class="text-gray-600">Price: ฿{{ item.price.toLocaleString() }}</p>
+          <p class="text-gray-500 mb-4">In stock: {{ item.quantityInStock }}</p>
+          <button
+            @click="addItemToCart(item)"
+            class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+          >
             Add to Cart
           </button>
-
           <router-link :to="{ name: 'Products', params: { id: item.id } }">
-            <button class="mt-2 btn btn-soft btn-info">View Product</button>
+            <button
+              class="mt-2 w-full bg-gray-200 text-gray-700 py-2 rounded-md hover:bg-gray-300"
+            >
+              View Product
+            </button>
           </router-link>
         </div>
       </div>

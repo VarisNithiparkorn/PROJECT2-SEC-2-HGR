@@ -17,7 +17,7 @@
       "password": "test2",
       "email": "test2@gmail.com",
       "role": "user",
-      "address": ""
+      "address": "123 test test"
     },
     {
       "id": "fe27",
@@ -32,29 +32,19 @@
   ],
   "carts": [
     {
-      "products": [
-        {
-          "id": "e535",
-          "productName": "Computer 1",
-          "price": 2000,
-          "quantityInStock": 5,
-          "description": "-",
-          "type": "pc",
-          "amount": 2
-        }
-      ],
+      "products": [],
       "id": "727c"
     },
     {
       "products": [
         {
-          "id": "e535",
-          "productName": "Computer 1",
-          "price": 2000,
-          "quantityInStock": 5,
-          "description": "-",
-          "type": "pc",
-          "amount": 10
+          "id": "e8f9",
+          "productName": " LOGITECH G PRO",
+          "price": 4590,
+          "quantityInStock": 2,
+          "description": "MOUSE LOGITECH G PRO-X SUPERLIGHT 2 - (BLACK)",
+          "type": "mouse",
+          "amount": 2
         }
       ],
       "id": "4bfa"
@@ -67,83 +57,155 @@
   "products": [
     {
       "id": "e535",
-      "productName": "Computer 1",
-      "price": 2000,
-      "quantityInStock": 5,
-      "description": "-",
+      "productName": "DELL Inspiron 5430",
+      "price": 21490,
+      "quantityInStock": 6,
+      "description": "DELL DESKTOP AIO INSPIRON 5430-OID5430101501GTH Black",
       "type": "pc"
     },
     {
       "id": "f59e",
-      "productName": "Computer 2",
-      "price": "200",
-      "quantityInStock": 5,
-      "description": "-",
+      "productName": "Lenovo IdeaCentre",
+      "price": "28990",
+      "quantityInStock": 4,
+      "description": "AIO Lenovo IdeaCentre AIO 27IRH9 (F0HM006UTA)",
       "type": "pc"
     },
     {
       "id": "45f4",
-      "productName": "Computer 3",
-      "price": 300,
-      "quantityInStock": 5,
-      "description": "-",
+      "productName": "MSI Modern AM272P",
+      "price": 22490,
+      "quantityInStock": 1,
+      "description": "AIO MSI Modern AM272P 1M-829TH (White)",
       "type": "pc"
     },
     {
       "id": "cbea",
-      "productName": "Laptop 4",
-      "price": 100,
+      "productName": "ASUS TUF GAMING",
+      "price": 26990,
+      "quantityInStock": 3,
+      "description": "NOTEBOOK ASUS TUF GAMING A15 FA506NFR-HN005W (GRAPHITE BLACK)",
+      "type": "laptop"
+    },
+    {
+      "id": "2165",
+      "productName": "MSI SWORD16 HX",
+      "price": 39990,
+      "quantityInStock": 2,
+      "description": "NOTEBOOK MSI SWORD16 HX B14VEKG-1023TH - COSMOS GRAY",
+      "type": "laptop"
+    },
+    {
+      "id": "c388",
+      "productName": "ASUS ROG STRIX G18",
+      "price": 87990,
+      "quantityInStock": 1,
+      "description": "NOTEBOOK ASUS ROG STRIX G18 G814JIR-N6013W (ECLIPSE GRAY)",
+      "type": "laptop"
+    },
+    {
+      "id": "c6b7",
+      "productName": "GIGABYTE G6X ",
+      "price": 39990,
       "quantityInStock": 5,
-      "description": "-",
+      "description": "NOTEBOOK GIGABYTE G6X 9KG-43TH854SH i7-13650HX ",
       "type": "laptop"
     },
     {
       "id": "19d3",
-      "productName": "Laptop 5",
-      "price": 100,
-      "quantityInStock": 5,
-      "description": "-",
+      "productName": "ACER ASPIRE LITE15",
+      "price": 15990,
+      "quantityInStock": 6,
+      "description": "NOTEBOOK ACER ASPIRE LITE15 AL15-41P-R47V (LIGHT SILVER) ",
       "type": "laptop"
     },
     {
       "id": "361f",
-      "productName": "Laptop 6",
-      "price": 100,
-      "quantityInStock": 5,
-      "description": "-",
+      "productName": "HP 15-FC1001AU",
+      "price": 15990,
+      "quantityInStock": 7,
+      "description": "NOTEBOOK HP 15-FC1001AU (NATURAL SILVER) ",
       "type": "laptop"
     },
     {
       "id": "d777",
-      "productName": "Gadgets 7",
-      "price": 100,
-      "quantityInStock": 5,
-      "description": "-",
-      "type": "gadgets"
+      "productName": "MOFII SWEET K WIRED",
+      "price": 390,
+      "quantityInStock": 10,
+      "description": "KEYBOARD MOFII SWEET K WIRED RETRO KEYBOARD (LIPMILKTEA) (EN/TH)",
+      "type": "keyboard"
     },
     {
       "id": "2a0b",
-      "productName": "Gadgets 8",
-      "price": 100,
-      "quantityInStock": 5,
-      "description": "-",
-      "type": "gadgets"
+      "productName": "NEOLUTION AVATAR",
+      "price": 745,
+      "quantityInStock": 12,
+      "description": "KEYBOARD NEOLUTION E-SPORT AVATAR (RED SWITCH) (RAINBOW LED) (EN/TH)",
+      "type": "keyboard"
     },
     {
       "id": "a169",
-      "productName": "Gadgets 9",
-      "price": 100,
+      "productName": "LOGITECH G515",
+      "price": 4290,
       "quantityInStock": 5,
-      "description": "-",
-      "type": "gadgets"
+      "description": "KEYBOARD LOGITECH G515 LIGHTSPEED TKL (BLACK) (TACTILE SWITCH) (TH/EN) ",
+      "type": "keyboard"
     },
     {
       "id": "0e91",
-      "productName": "Gadgets 10",
-      "price": 100,
-      "quantityInStock": 5,
-      "description": "-",
-      "type": "gadgets"
+      "productName": "HyperX ALLOY RISE",
+      "price": 8990,
+      "quantityInStock": 6,
+      "description": "KEYBOARD HyperX ALLOY RISE 75 WIRELESS (TH) (91Y91AA#AKL) ",
+      "type": "keyboard"
+    },
+    {
+      "id": "e8f9",
+      "productName": " LOGITECH G PRO",
+      "price": 4590,
+      "quantityInStock": 2,
+      "description": "MOUSE LOGITECH G PRO-X SUPERLIGHT 2 - (BLACK)",
+      "type": "mouse"
+    },
+    {
+      "id": "8e6f",
+      "productName": " LOGITECH G102",
+      "price": 590,
+      "quantityInStock": 10,
+      "description": "MOUSE LOGITECH G102 LIGHTSYNC",
+      "type": "mouse"
+    },
+    {
+      "id": "c407",
+      "productName": "CORSAIR HARPOON",
+      "price": 1590,
+      "quantityInStock": 6,
+      "description": "MOUSE CORSAIR HARPOON RGB WIRELESS",
+      "type": "mouse"
+    },
+    {
+      "id": "e53f",
+      "productName": "RAZER KRAKEN X LITE ",
+      "price": 990,
+      "quantityInStock": 8,
+      "description": "HEADSET RAZER KRAKEN X LITE - BLACK ",
+      "type": "headset"
+    },
+    {
+      "id": "1622",
+      "type": "headset",
+      "productName": " STEELSERIES ARCTIS",
+      "price": 5490,
+      "quantityInStock": 8,
+      "description": "HEADSET STEELSERIES ARCTIS NOVA 5 WIRELESS (BLACK)"
+    },
+    {
+      "id": "00b6",
+      "productName": " HyperX CLOUD",
+      "price": 1090,
+      "quantityInStock": 4,
+      "description": "HEADSET HyperX CLOUD EARBUDS II - RED (705L8AA)",
+      "type": "headset"
     }
   ]
 }

@@ -4,6 +4,8 @@ import ListCartItem from "./ListCartItem.vue";
 import { editItem, getItemById, updateItem } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
+import Header from "./Header.vue";
+
 const myCart = useCarts();
 const { initCart, updateProductInCart } = myCart;
 
@@ -12,7 +14,7 @@ const { carts, calculateTotalPrice } = storeToRefs(myCart);
 const emit = defineEmits(["editCart"]);
 const props = defineProps({
   userId: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
@@ -34,7 +36,7 @@ const removeCartItem = async (pid, cid) => {
       { products: updatedProductInCart }
     );
     updateProductInCart(cid, updatedCart);
-    showRemoveButton.value = false
+    showRemoveButton.value = false;
   } catch (error) {
     console.log(error);
   }
@@ -92,10 +94,9 @@ const decreaseAmount = async (pid, cid) => {
 const isCartEmpty = computed(() => {
   return calculateTotalPrice.value <= 0;
 });
-onBeforeMount(()=>{
-  carts.value = []
-}) 
-
+onBeforeMount(() => {
+  carts.value = [];
+});
 
 onMounted(async () => {
   try {
@@ -103,24 +104,24 @@ onMounted(async () => {
       `${import.meta.env.VITE_APP_URL}/carts`,
       props.userId
     );
-
     initCart(cart);
-
   } catch (error) {
     console.log(error);
   }
 });
+
+
 </script>
 
 <template>
   <router-link :to="{ name: 'Home' }">
-    <button class="text-xl p-4 cursor-pointer" @click="back">Back</button>
+    <button class="text-2xl p-4 cursor-pointer font-bold" @click="back">Back</button>
   </router-link>
   <div v-if="isCartEmpty" class="w-full h-full flex justify-center">
     <h1 class="text-xl text-red-500 mt-20">Cart is empty.</h1>
   </div>
   <div
-    class="flex flex-col mb-7 w-full justify-center items-center"
+    class="flex flex-col mb-10 w-full justify-center items-center"
     v-show="!isCartEmpty"
   >
     <ListCartItem
@@ -131,9 +132,12 @@ onMounted(async () => {
       @increase-amount="increaseAmount"
       @remove-cart-item="removeCartItem"
     />
+    <div
+      class="w-[1000px] mt-5 text-gray-300 border-t-2 p-5 flex justify-between max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px] relative"
+    ></div>
     <div>
       <div
-        class="w-[1190px] max-lg:w-[650px] max-2xl:w-[900px] flex justify-end mt-16 max-sm:w-[300px] max-xl:w-[900px]"
+        class="w-[1190px] max-lg:w-[650px] max-2xl:w-[900px] -mt-4 flex justify-end max-sm:w-[300px] max-xl:w-[900px]"
       >
         <p class="text-lg font-bold max-sm:mr-2">
           Total Price : ฿ {{ calculateTotalPrice }}
