@@ -179,11 +179,13 @@ onMounted(async () => {
           :key="item.id"
           class="bg-white rounded-xl shadow-md p-4 text-center hover:shadow-lg transition"
         >
+        <div class="flex justify-center">
           <img
              :src="`/ProductImages/${item.id}.jpg`"
             alt="Product Image"
-            class="w-full h-40 object-cover rounded-md mb-3 bg-center bg-cover"
+            class="w-auto h-40 object-cover rounded-md mb-3 bg-center bg-cover"
           />
+        </div>
           <h3 class="text-lg font-semibold text-gray-800">
             {{ item.productName }}
           </h3>
