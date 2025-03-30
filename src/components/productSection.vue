@@ -24,18 +24,26 @@ const cartUrl = `${import.meta.env.VITE_APP_URL}/carts`;
 const addItemToCart = async (item) => {
   try {
     const cartId = props.userId;
-    const cartItem = {
-      ...item,
-      amount: 1,
-    };
     const cart = await getItemById(cartUrl, cartId);
     const existingProductIndex = cart.products.findIndex(
       (p) => p.id === item.id
     );
-
     if (existingProductIndex !== -1) {
+      const currentAmount = cart.products[existingProductIndex].amount;
+      if (currentAmount >= item.quantityInStock) {
+        alert("Cannot add more items - Maximum stock reached!");
+        return;
+      }
       cart.products[existingProductIndex].amount += 1;
     } else {
+      if (item.quantityInStock <= 0) {
+        alert("This item is out of stock!");
+        return;
+      }
+      const cartItem = {
+        ...item,
+        amount: 1,
+      };
       cart.products.push(cartItem);
     }
 
