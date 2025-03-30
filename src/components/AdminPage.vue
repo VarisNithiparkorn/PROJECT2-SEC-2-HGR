@@ -3,8 +3,14 @@ import { onMounted, ref } from "vue";
 import ListModel from "./ListModel.vue";
 import { addItem, deleteItemById, getItems, editItem } from "@/libs/fetchUtils";
 import ProductForm from "./ProductForm.vue";
+import Header from "./Header.vue";
 const products = ref([]);
-
+const props = defineProps({
+  aid: {
+    type: String,
+    required: true,
+  },
+});
 const removeProduct = async (pid) => {
   const removeStatus = await deleteItemById(
     `${import.meta.env.VITE_APP_URL}/products`,
@@ -64,6 +70,10 @@ const setEditProduct = (product) => {
 </script>
 
 <template>
+  <Header
+    :userId="props.aid"
+    nav-bar="hide"
+  />
   <div>
     <div class="p-8 flex justify-end" v-if="!isAdding && !isEditing">
       <button class="btn btn-primary" @click="isAdding = !isAdding">Add</button>
@@ -84,12 +94,12 @@ const setEditProduct = (product) => {
       <ListModel :items="products">
         <template #item="{ item: product }">
           <div
-            class="w-[900px] flex flex-col items-center border-2 mb-4 p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 max-sm:w-[300px] max-[769px]:w-[600px]"
+            class="w-[900px] flex flex-col items-center mb-4 p-5 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 max-sm:w-[300px] max-[769px]:w-[600px]"
           >
             <div class="flex w-full justify-between items-center mb-4">
               <div class="flex items-center">
                 <img
-                  :src="`/ProductImages/product${product.id}.jpg`"
+                  :src="`/ProductImages/${product.id}.jpg`"
                   class="w-24 h-24 max-sm:w-20 max-sm:h-20 rounded-md max-sm:-ml-3"
                 />
                 <div class="ml-4">
@@ -98,10 +108,13 @@ const setEditProduct = (product) => {
                   </h1>
                   <p class="text-sm text-gray-600">ID: {{ product.id }}</p>
                   <p class="text-sm text-gray-600">
-                    Price: ${{ product.price }}
+                    Price: ${{ product.price.toLocaleString() }}
                   </p>
                   <p class="text-sm text-gray-600">
                     In Stock: {{ product.quantityInStock }}
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    Desc: {{ product.description }}
                   </p>
                   <p class="text-sm text-gray-600">Type: {{ product.type }}</p>
                 </div>
