@@ -101,11 +101,11 @@ onMounted(async () => {
       class="w-64 min-h-screen bg-gradient-to-b from-blue-600 to-violet-900 p-6 text-white shadow-lg
       max-[1025px]:w-48 max-[769px]:w-44 max-[376px]:w-30"
     >
-      <h2 class="text-xl font-semibold mb-6">Filter</h2>
+      <h2 class="text-xl font-semibold mb-6 mt-16">Filter</h2>
       <div class="mb-8">
         <label class="block mb-2 font-medium">Category</label>
         <select
-          class="w-full p-2 rounded-md text-black bg-white border border-gray-300 focus:outline-none"
+          class="max-sm:text-[12px] w-full p-2 rounded-md text-black bg-white border border-gray-300 focus:outline-none"
           v-model="selectedCategory"
         >
           <option value="">All Categories</option>
@@ -160,10 +160,10 @@ onMounted(async () => {
         </label>
       </div>
     </div>
-    <div class="flex-1 p-6 bg-gray-50">
+    <div class="flex-1 p-6 bg-gray-50 mt-16">
       <div
         v-if="sortedProducts.length === 0"
-        class="text-center text-gray-500 text-lg py-10"
+        class="text-center text-gray-500 text-lg py-10 "
       >
         No products available
       </div>
@@ -177,9 +177,9 @@ onMounted(async () => {
         <div
           v-for="item in sortedProducts"
           :key="item.id"
-          class="bg-white rounded-xl shadow-md p-4 text-center hover:shadow-lg transition"
+          class="bg-white rounded-xl shadow-md p-4 text-center hover:shadow-lg transition max-sm:w-[180px]"
         >
-        <div class="flex justify-center">
+        <div class="flex justify-center ">
           <img
              :src="`/ProductImages/${item.id}.jpg`"
             alt="Product Image"

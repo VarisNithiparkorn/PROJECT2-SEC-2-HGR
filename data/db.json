@@ -17,7 +17,7 @@
       "password": "test2",
       "email": "test2@gmail.com",
       "role": "user",
-      "address": "123 test test"
+      "address": "123 test test test"
     },
     {
       "id": "fe27",
@@ -38,13 +38,22 @@
     {
       "products": [
         {
-          "id": "e8f9",
-          "productName": " LOGITECH G PRO",
-          "price": 4590,
-          "quantityInStock": 2,
-          "description": "MOUSE LOGITECH G PRO-X SUPERLIGHT 2 - (BLACK)",
-          "type": "mouse",
-          "amount": 2
+          "id": "e535",
+          "productName": "DELL Inspiron 5430",
+          "price": 21490,
+          "quantityInStock": 6,
+          "description": "DELL DESKTOP AIO INSPIRON 5430-OID5430101501GTH Black",
+          "type": "pc",
+          "amount": 1
+        },
+        {
+          "id": "cbea",
+          "productName": "ASUS TUF GAMING",
+          "price": 26990,
+          "quantityInStock": 3,
+          "description": "NOTEBOOK ASUS TUF GAMING A15 FA506NFR-HN005W (GRAPHITE BLACK)",
+          "type": "laptop",
+          "amount": 1
         }
       ],
       "id": "4bfa"
