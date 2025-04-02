@@ -109,7 +109,7 @@ onMounted(async () => {
     console.log(error);
   }
 });
-const total = calculateTotalPrice.value.toLocaleString()
+
 
 </script>
 
@@ -133,20 +133,20 @@ const total = calculateTotalPrice.value.toLocaleString()
       @remove-cart-item="removeCartItem"
     />
     <div
-      class="w-[1000px] mt-5 text-gray-300 border-t-2 p-5 flex justify-between max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px] relative"
+      class="w-[1000px] mt-5 text-gray-300 border-t-2 p-5 flex justify-between max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px] max-[1025px]:w-[900px] max-[1441px]:w-[900px] max-[2561px]:w-[900px] relative"
     ></div>
     <div>
       <div
-        class="w-[1190px] max-lg:w-[650px] max-2xl:w-[900px] -mt-4 flex justify-end max-sm:w-[300px] max-xl:w-[900px]"
+        class="w-[1190px] max-lg:w-[650px] max-2xl:w-[900px] -mt-4 flex justify-end max-sm:w-[300px] max-xl:w-[900px] max-[2561px]:w-[900px]"
       >
         <p class="text-lg font-bold max-sm:mr-2">
-          Total Price : ฿ {{ total }}
+          Total Price : ฿ {{  calculateTotalPrice.toLocaleString() }}
         </p>
       </div>
     </div>
     <div class="flex w-full justify-center">
       <div
-        class="max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] flex justify-end items-end mt-5 max-sm:mr-4 max-lg:m max-md:mr-20"
+        class="max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] max-[2561px]:w-[900px] flex justify-end items-end mt-5 max-sm:mr-4 max-lg:m max-md:mr-20"
       >
         <button class="btn btn-soft mr-3" @click="editCart">Edit</button>
         <router-link :to="{ name: 'Payment' }">

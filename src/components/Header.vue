@@ -65,12 +65,12 @@ const searchValue = (selectedText = "") => {
   <div
     :class="
       navBar === 'show'
-        ? 'navbar shadow-sm bg-gradient-to-r from-indigo-700 to-sky-700  w-full flex items-center'
+        ? 'navbar shadow-sm bg-gradient-to-r from-indigo-700 to-sky-700  w-full flex items-center fixed'
         : 'navbar bg-none w-full flex items-center'
     "
   >
     <div class="pl-6" v-show="navBar === 'show'">
-      <slot name="logo" class="btn btn-ghost text-xl">Logo</slot>
+      <div class=" text-2xl text-green-300 italic font-bold max-sm:text-base">HGR Store</div>
     </div>
     <div class="flex-1 flex justify-center">
       <input
@@ -141,7 +141,7 @@ const searchValue = (selectedText = "") => {
           </div>
         </router-link>
       </div>
-      <div class="dropdown dropdown-end mr-5">
+      <div class="dropdown dropdown-end max-sm:mr-10 max-[769px]:mr-12">
         <div
           tabindex="0"
           role="button"

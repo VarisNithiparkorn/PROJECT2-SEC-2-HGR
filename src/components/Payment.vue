@@ -8,8 +8,8 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const myCart = useCarts();
-const { initCart, updateProductInCart } = myCart;
-const { carts } = storeToRefs(myCart);
+const { initCart, updateProductInCart} = myCart;
+const { carts,calculateTotalPrice  } = storeToRefs(myCart);
 const props = defineProps({
   userId: {
     type: String,
@@ -65,6 +65,7 @@ onMounted(async () => {
     console.log(error);
   }
 });
+
 </script>
 
 <template>
@@ -73,35 +74,62 @@ onMounted(async () => {
       <router-link :to="{ name: 'Cart' }">
         <button class="text-xl p-4 cursor-pointer" @click="back">Back</button>
       </router-link>
+
+      <div class="w-full flex flex-col justify-center items-center pl-4">
+        <div class="flex w-[900px] mt-5 max-sm:w-72 max-lg:w-[650px]">
+          <p class="font-bold text-xl max-sm:text-base">Address</p>
+        </div>
+      </div>
       <div class="w-full flex flex-col justify-center items-center">
         <div
-          class="flex justify-between border-2 w-[900px] h-[100px] mt-8 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px]"
+          class="shadow-2xl rounded-2xl w-[900px] h-[120px] p-5 max-sm:p-2 flex justify-between mt-4 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px] relative"
         >
           <h1 class="p-5">{{ userAddress }}</h1>
 
-          <p class="cursor-pointer p-2 pr-4 underline text-blue-300" @click="profileSetting">edit</p>
+          <p
+            class="cursor-pointer p-2 pr-4 underline text-blue-300"
+            @click="profileSetting"
+          >
+            edit
+          </p>
+        </div>
+      </div>
+      <div class="w-full flex flex-col justify-center items-center pl-4">
+        <div class="flex w-[900px] mt-5 max-sm:w-72 max-lg:w-[650px]">
+          <p class="font-bold text-xl max-sm:text-base">Order details</p>
         </div>
       </div>
       <div class="w-full flex flex-col justify-center items-center">
         <ListCartItem :userId="props.userId" page="payment" :carts="carts" />
       </div>
-
+      <div class="flex w-full justify-center">
+        <div
+          class="mb-5 max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] flex justify-end items-end mt-6 max-sm:mr-4 max-lg:m max-md:mr-20 max-[2561px]:w-[900px]"
+        >
+        <p class="font-bold text-xl max-sm:text-base mr-2">Total : {{ calculateTotalPrice.toLocaleString() }} ฿</p>
+      </div>
+      </div>
+      <div class="w-full flex flex-col justify-center items-center pl-4">
+        <div class="flex w-[900px] mt-5 max-sm:w-72 max-lg:w-[650px]">
+          <p class="font-bold text-xl max-sm:text-base">Payment</p>
+        </div>
+      </div>
       <div class="w-full flex flex-col justify-center items-center">
         <div
-          class="flex border-2 w-[900px] h-[100px] mt-5 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px]"
+          class="shadow-2xl rounded-2xl w-[900px] h-[120px] p-5 max-sm:p-2 flex justify-between mt-4 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px] relative"
         >
           <h1 class="p-2">Payment method</h1>
         </div>
       </div>
       <div class="flex w-full justify-center">
         <div
-          class="max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] flex justify-end items-end mt-5 max-sm:mr-4 max-lg:m max-md:mr-20"
+          class="mb-5 max-sm:w-[300px] max-lg:w-[650px] max-xl:w-[900px] max-2xl:w-[900px] flex justify-end items-end mt-6 max-sm:mr-4 max-lg:m max-md:mr-20 max-[2561px]:w-[900px]"
         >
           <button
             class="btn btn-active btn-primary max-sm:w-16 mb-5"
             @click="buyProducts"
           >
-            Buy
+            Order
           </button>
         </div>
       </div>

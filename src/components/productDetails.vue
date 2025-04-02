@@ -81,7 +81,7 @@ onMounted(async () => {
         <h2 class="text-xl font-semibold mb-2 text-black">
           {{ product.productName }}
         </h2>
-        <p class="text-gray-600">{{ product.type }}</p>
+        <p class="text-gray-600">{{ product.description}}</p>
         <div class="flex items-center mt-2">
           <span class="text-yellow-400">★★★★★</span>
           <span class="text-gray-600 ml-2"
