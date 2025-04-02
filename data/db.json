@@ -36,7 +36,26 @@
       "id": "727c"
     },
     {
-      "products": [],
+      "products": [
+        {
+          "id": "e535",
+          "productName": "DELL Inspiron 5430",
+          "price": 21490,
+          "quantityInStock": 6,
+          "description": "DELL DESKTOP AIO INSPIRON 5430-OID5430101501GTH Black",
+          "type": "pc",
+          "amount": 1
+        },
+        {
+          "id": "cbea",
+          "productName": "ASUS TUF GAMING",
+          "price": 26990,
+          "quantityInStock": 3,
+          "description": "NOTEBOOK ASUS TUF GAMING A15 FA506NFR-HN005W (GRAPHITE BLACK)",
+          "type": "laptop",
+          "amount": 1
+        }
+      ],
       "id": "4bfa"
     },
     {
