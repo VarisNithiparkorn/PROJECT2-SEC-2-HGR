@@ -33,9 +33,8 @@ async function register() {
               router.push({name:'Home'})
             }
             if(account.role === 'admin'){
-              
+              router.push({name:'admin'})
             }
-
             console.log('login')
             loginUser.value = account
         }

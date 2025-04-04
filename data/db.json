@@ -3,7 +3,7 @@
     {
       "id": "727c",
       "firstName": "test1",
-      "lastName": "test1",
+      "lastName": "test10",
       "username": "test1",
       "password": "test1",
       "email": "test1@gmail.com",
@@ -28,6 +28,12 @@
       "email": "test3@gmail.com",
       "role": "user",
       "address": ""
+    },
+    {
+      "id":"9999",
+      "username":"admin",
+      "password":"admin",
+      "role":"admin"
     }
   ],
   "carts": [
@@ -60,6 +66,18 @@
     },
     {
       "id": "fe27",
+      "products": []
+    },
+    {
+      "id": "94cc",
+      "products": []
+    },
+    {
+      "id": "bc7d",
+      "products": []
+    },
+    {
+      "id": "cbf0",
       "products": []
     }
   ],

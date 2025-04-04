@@ -11,8 +11,7 @@ const selectedUser = ref(null)
 const usedAcc = ref(null)
 const errorMsg = ref('')
 onMounted( async ()=>{
-    selectedUser.value = await getItemById(import.meta.env.VITE_APP_URL+'/users',param.params.userId
-    )
+    selectedUser.value = await getItemById(import.meta.env.VITE_APP_URL+'/users',param.params.userId)
 })
 
 function setField(){
@@ -24,13 +23,15 @@ function setField(){
 async function editAccountInfo(){
     try{
         const input = selectedFieldValue.value.trim()
-        const usedAcc = await getItemByFieldName(import.meta.env.VITE_APP_URL+'/users','firstName',input)
+        console.log(input)
+        const usedAcc = await getItemByFieldName(import.meta.env.VITE_APP_URL+'/users',selectedField.value,input)
+        console.log(usedAcc)
         if(input.length === 0 ){
             console.log(input.length)
             errorMsg.value = 'your ' + selectedField.value + ' can not be empty'
             return
         }
-        if(usedAcc !== null && usedAcc.length !== 0 && usedAcc[0].id !== selectedUser.value.id){
+        if(usedAcc !== null && usedAcc.length !== 0 && usedAcc[0].id !== selectedUser.value.id && selectedField.value !== 'address'){
             errorMsg.value =  selectedField.value + ' has already used'
             return     
         }
@@ -62,7 +63,7 @@ function resetform() {
     </div>
 
     <!-- User Information Section -->
-    <div class="flex justify-center bg-white w-full h-[50%]">
+    <div class="flex justify-center bg-white w-full h-[70%]">
         <div class="w-[50%] h-full bg-white border shadow-md p-4 rounded-xl flex flex-col">
             <div class="ml-4 mt-2 space-y-3" v-for="(value, key) in selectedUser" :key="key">
                 <label class="flex items-center text-gray-700 font-medium" v-if="key !== 'id' && key !== 'role' && key !== 'password'">
@@ -71,7 +72,7 @@ function resetform() {
                         <img :id="key" class="w-full h-full" src="../assets/edit_icon.svg">
                     </div>
                 </label>
-                <p class="text-gray-600" v-if="key !== 'id' && key !== 'role' && key !== 'password'">
+                <p class="text-gray-600 overflow-hidden w-[100%]" v-if="key !== 'id' && key !== 'role' && key !== 'password'">
                     {{ value }}
                 </p>
             </div>
@@ -79,7 +80,7 @@ function resetform() {
     </div>
 
     
-    <div v-show="isEdit" class="absolute top-1/2 left-1/2 w-[30%] h-[360px] bg-amber-600 rounded-xl p-6 shadow-2xl transform -translate-x-1/2 -translate-y-1/2">
+    <div v-show="isEdit" class="absolute top-1/2 left-1/2 max-[2561px]:w-[30%] max-[769px]:w-[70%] h-[360px] bg-amber-600 rounded-xl p-6 shadow-2xl transform -translate-x-1/2 -translate-y-1/2">
     <h1 class="text-white font-bold text-xl mb-4">
         {{ selectedField }}
     </h1>

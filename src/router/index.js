@@ -5,6 +5,7 @@ import CartManagement from "@/components/CartManagement.vue";
 import Register from "@/components/AccountRegister.vue";
 import Profile from "@/components/AccountProfile.vue";
 import ProductDetails from "@/components/productDetails.vue";
+import AdminPage from "@/components/AdminPage.vue";
 const history = createWebHistory()
 const routes = [
     {
@@ -41,6 +42,13 @@ const routes = [
         path:'/profile/:userId',
         name:'Profile',
         component: Profile,
+        props: true
+    },
+
+    {
+        path:'/admin',
+        name:'admin',
+        component: AdminPage ,
         props: true
     },
 
