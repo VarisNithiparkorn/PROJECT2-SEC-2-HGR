@@ -4,7 +4,7 @@
       "id": "727c",
       "firstName": "test1",
       "lastName": "test10",
-      "username": "test1",
+      "username": "test10",
       "password": "test1",
       "email": "test1@gmail.com",
       "role": "user"
@@ -30,10 +30,14 @@
       "address": ""
     },
     {
-      "id":"9999",
-      "username":"admin",
-      "password":"admin",
-      "role":"admin"
+      "id": "9999",
+      "firstName": "admin",
+      "lastName": "admin",
+      "username": "admin",
+      "password": "admin",
+      "email": "test3@gmail.com",
+      "address": "",
+      "role": "admin"
     }
   ],
   "carts": [
@@ -78,6 +82,10 @@
     },
     {
       "id": "cbf0",
+      "products": []
+    },
+    {
+      "id": "404f",
       "products": []
     }
   ],

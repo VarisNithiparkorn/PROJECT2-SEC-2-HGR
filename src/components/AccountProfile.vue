@@ -3,6 +3,7 @@ import { getItemByFieldName, getItemById, updateItem } from '@/libs/fetchUtils';
 import { onBeforeUpdate, onMounted, onUnmounted, watch } from 'vue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+import InputPopUp from './InputPopUp.vue';
 const selectedField =  ref('')
 const selectedFieldValue =  ref('')
 const isEdit = ref(false)
@@ -20,35 +21,40 @@ function setField(){
     isEdit.value =  !isEdit.value
 }
 
-async function editAccountInfo(){
+async function editAccountInfo(selectedFieldValue){
     try{
-        const input = selectedFieldValue.value.trim()
-        console.log(input)
+        const input = selectedFieldValue.trim()
         const usedAcc = await getItemByFieldName(import.meta.env.VITE_APP_URL+'/users',selectedField.value,input)
-        console.log(usedAcc)
         if(input.length === 0 ){
-            console.log(input.length)
             errorMsg.value = 'your ' + selectedField.value + ' can not be empty'
             return
         }
-        if(usedAcc !== null && usedAcc.length !== 0 && usedAcc[0].id !== selectedUser.value.id && selectedField.value !== 'address'){
-            errorMsg.value =  selectedField.value + ' has already used'
+        if(usedAcc !== null && usedAcc.length !== 0 && usedAcc[0].id !== selectedUser.value.id && (selectedField.value !== 'address'&& selectedField.value !== 'email')){
+            errorMsg.value =  selectedField.value +' '+ input +  ' has already used'
             return     
         }
         if(usedAcc !== null && usedAcc.length !== 0 && usedAcc[0].id === selectedUser.value.id && usedAcc[0][selectedField.value] === input){
-            isEdit.value = false
+            resetform()
             return
+        }
+        if((usedAcc === null || usedAcc.length === 0) && selectedField.value === 'email'){
+            const isCorrectForm = input.includes('@gmail.com')
+            if(!isCorrectForm){
+                errorMsg.value = selectedField.value + ' is incorrect format'
+                return
+            }
         }
         selectedUser.value[selectedField.value] = input
         const updatedUser = await updateItem(import.meta.env.VITE_APP_URL+'/users',selectedUser.value.id,selectedUser.value)
         selectedUser.value = updatedUser
-        isEdit.value = false
         resetform()
     }catch(error){
         console.log(error)
     }
 }
 function resetform() {
+    errorMsg.value = ''
+    isEdit.value = false
     selectedFieldValue.value = ''
     selectedField.value = ''
 }
@@ -78,9 +84,10 @@ function resetform() {
             </div>
         </div>
     </div>
-
+    <InputPopUp @confirm="editAccountInfo" :enable="isEdit" :label="selectedField" :value="selectedFieldValue" :error-msg="errorMsg">
+    </InputPopUp>
     
-    <div v-show="isEdit" class="absolute top-1/2 left-1/2 max-[2561px]:w-[30%] max-[769px]:w-[70%] h-[360px] bg-amber-600 rounded-xl p-6 shadow-2xl transform -translate-x-1/2 -translate-y-1/2">
+    <!-- <div v-show="isEdit" class="absolute top-1/2 left-1/2 max-[2561px]:w-[30%] max-[769px]:w-[70%] h-[360px] bg-amber-600 rounded-xl p-6 shadow-2xl transform -translate-x-1/2 -translate-y-1/2">
     <h1 class="text-white font-bold text-xl mb-4">
         {{ selectedField }}
     </h1>
@@ -93,7 +100,7 @@ function resetform() {
             class="mt-4 w-full bg-white text-amber-600 font-semibold py-2 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-amber-500 hover:text-white">
         Save
     </button>
-    </div>
+    </div> -->
 </div>
 
 

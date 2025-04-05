@@ -12,10 +12,9 @@ const props = defineProps({
     }
 })
 
-
 // to reset inputValue after change mode
 onBeforeUpdate(()=>{
-    
+    console.log('onBeforeUpdate')
     data = props.inputField
 })
 

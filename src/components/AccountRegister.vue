@@ -1,9 +1,9 @@
 <script setup>
 import InputForm from './InputForm.vue';
-import { addItem, getItemByFieldName, getItemById} from '@/libs/fetchUtils';
-import { ref} from 'vue';
+import { addItem, getItemByFieldName, getItemById, updateItem} from '@/libs/fetchUtils';
+import { computed, ref} from 'vue';
 import { useRouter } from 'vue-router';
-
+import InputPopUp from './InputPopUp.vue';
 
 const url = import.meta.env.VITE_APP_URL
 const router = useRouter()
@@ -26,7 +26,6 @@ async function register() {
         if (isLogin.value) {
         const account = await hasAccount()
         if(account === null){
-            console.log('cannot login') 
             erroeMsg.value = 'Incorrect username or password'
         }else{ 
             if(account.role === 'user'){  
@@ -35,7 +34,6 @@ async function register() {
             if(account.role === 'admin'){
               router.push({name:'admin'})
             }
-            console.log('login')
             loginUser.value = account
         }
 
@@ -47,15 +45,11 @@ async function register() {
             
 
             if (invalidateInput(fieldsName[index],inputValue)) {
-                console.log('1')
                 return
-            }else if(fieldsName[index] === 'email' && !inputValue.includes('@gmail')){
+            }else if(fieldsName[index] === 'email' && !inputValue.includes('@gmail.com')){
               erroeMsg.value = 'email format can not use '
-                console.log('2')
                 return
             }else if(await dataHasUsed(fieldsName[index])){
-                
-                console.log('3')
                 return
             }
             newAccount[fieldsName[index]] = inputValue
@@ -81,7 +75,6 @@ async function hasAccount(){
     const emailCases = await getItemByFieldName(url+'/users','email',userInput.value.username)
     const [emailCase] = [...emailCases]
     if(usernameCase === null && usernameCase && undefined && emailCase === null  && emailCase === undefined){
-    
         return null
     }else if(usernameCase !==null && usernameCase !== undefined){
         return userInput.value.password === usernameCase.password ? usernameCase : null
@@ -131,13 +124,71 @@ function complete() {
    isLogin.value = true
    serviceEnd.value = false
 }
-function name(params) {
-  
+
+//reser password module
+const head = ref('enter your email')
+const passwordHelp = ref(false)
+const passwordHelp2 = ref(false)
+const confirmPass = ref('')
+const inputType = computed(()=>{
+  if(passwordHelp.value && !passwordHelp2.value){
+    return 'email'
+  }else if(passwordHelp.value && passwordHelp2.value){
+    console.log('password')
+    return 'password'
+  }
+})
+const err = ref('')
+const headMsg = ref('')
+let forgotPassAcc = []
+function showPopUp(){
+  passwordHelp.value = true
+  headMsg.value = 'Forget your password?'
+}
+async function checkAccount(emailorPass){
+  if(passwordHelp.value && passwordHelp2.value){
+    if(emailorPass !== confirmPass.value){
+      err.value = 'your password not match'
+      confirmPass.value = ''
+      return
+    }
+    const usedPass = await getItemByFieldName(url+'/users','password',emailorPass)
+    if(usedPass.length !== 0){
+      err.value = 'password has used'
+      confirmPass.value = ''
+      return
+    }
+    forgotPassAcc[0].password = emailorPass
+    const updatedUser = await updateItem(url+'/users',forgotPassAcc[0].id,forgotPassAcc[0])
+    reserForm()
+  }
+  if(passwordHelp.value && !passwordHelp2.value){
+    if(emailorPass === null || emailorPass.length === 0 || emailorPass === undefined || emailorPass === ''){
+      err.value = 'please enter your email'
+      return
+    }
+    forgotPassAcc = await getItemByFieldName(url+'/users','email',emailorPass)
+    if(forgotPassAcc === null || forgotPassAcc.length === 0){
+      err.value = emailorPass + ' does not register yet'
+      return
+    }
+    head.value = 'Create your new password'
+    err.value = ''
+    passwordHelp2.value = true 
+  }
+}
+function reserForm(){const head = ref('enter your email')
+ passwordHelp.value = false
+ passwordHelp2.value = false
+ confirmPass.value = ''
+   err.value = ''
+ headMsg.value = ''
+ forgotPassAcc.value = []
 }
 </script>
 
 <template>
-    <div class="flex items-center justify-center w-screen h-screen bg-gradient-to-br from-blue-500 to-purple-600">
+<div class="flex items-center justify-center w-screen h-screen bg-gradient-to-br from-blue-500 to-purple-600">
   <div class="max-w-[1020px] max-h-[600px] flex w-full h-full border p-4 rounded-4xl shadow-2xl bg-white">
     <div class="w-full p-4 flex flex-col justify-center items-center h-full hidden sm:flex">
       <div class="flex flex-col w-11/12 h-11/12">
@@ -161,7 +212,7 @@ function name(params) {
             <span v-show="!isLogin" class="text-red-500">*</span>
           </template>
           <template #option>
-            <p v-show="isLogin" class="text-sm underline cursor-pointer text-gray-500 hover:text-gray-700">
+            <p @click="showPopUp" v-show="isLogin" class="text-sm underline cursor-pointer text-gray-500 hover:text-gray-700">
               Forgot password?
             </p>
           </template>
@@ -183,7 +234,19 @@ function name(params) {
       </div>
     </div>
   </div>
+  <InputPopUp :enable="passwordHelp" :label="head" :error-msg="err" @confirm="checkAccount" :input-type="inputType">
+    <template #head>
+      <h1 v-show="passwordHelp">
+        {{headMsg}}
+      </h1>
+    </template>
+    <template v-slot:confirmPass>
+      <input v-show="passwordHelp && passwordHelp2" v-model="confirmPass" type="password"
+           class="border w-full p-3 mt-2 rounded-md focus:outline-none focus:ring-4 focus:ring-white shadow-sm">
+    </template>
+  </InputPopUp>
 </div>
+
 
   </template>
 
