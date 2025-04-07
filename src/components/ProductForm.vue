@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-const emit = defineEmits(["addNewProduct", "editProduct"]);
+const emit = defineEmits(["addNewProduct", "editProduct","cancelAdd"]);
 const props = defineProps({
   activeProduct: {
     type: Object,
@@ -10,7 +10,7 @@ const newProduct = ref(props.activeProduct);
 </script>
 
 <template>
-  <div class="flex items-center justify-center">
+  <div class="flex items-center justify-center mb-3">
     <div class="w-full max-w-lg px-6">
       <div class="p-8 bg-white shadow-md rounded-md">
         <h2 class="text-2xl text-black font-bold mb-6 text-center">
@@ -76,6 +76,12 @@ const newProduct = ref(props.activeProduct);
               class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition-colors duration-300"
             >
               Edit Product
+            </button>
+            <button
+              @click="$emit('cancelAdd')"
+              class="w-full mt-3 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors duration-300"
+            >
+             Cancel
             </button>
           </div>
         </div>

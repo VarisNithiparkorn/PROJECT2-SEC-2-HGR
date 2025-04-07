@@ -46,6 +46,11 @@ const addNewProduct = async (product) => {
   isAdding.value = false;
   currentProduct.value = {};
 };
+
+const cancelAddProduct = () =>{
+  isAdding.value = false;
+  currentProduct.value = {};
+}
 const updateProductInfo = async (product) => {
   try {
     const editedItem = await editItem(
@@ -84,6 +89,7 @@ const setEditProduct = (product) => {
         @add-new-product="addNewProduct"
         :activeProduct="currentProduct"
         @edit-product="updateProductInfo"
+        @cancel-add="cancelAddProduct"
       />
     </div>
 

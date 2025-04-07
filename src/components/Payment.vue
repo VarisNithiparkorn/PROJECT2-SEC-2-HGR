@@ -110,7 +110,13 @@ onMounted(async () => {
         <div
           class="shadow-2xl rounded-2xl w-[900px] h-[120px] p-5 max-sm:p-2 flex justify-between mt-4 max-sm:w-72 max-sm:h-[99px] max-lg:w-[650px] relative"
         >
-          <h1 class="p-2">Payment method</h1>
+        <h1 class="p-6">Select your payment method</h1>
+          <select>
+            <option>Credit Card</option>
+            <option>PayPal</option>
+            <option>Cash on Delivery</option>
+            <option>Bank Transfer</option>
+          </select>
         </div>
       </div>
       <div class="flex w-full justify-center">
