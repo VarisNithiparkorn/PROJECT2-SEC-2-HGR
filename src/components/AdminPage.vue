@@ -47,10 +47,10 @@ const addNewProduct = async (product) => {
   currentProduct.value = {};
 };
 
-const cancelAddProduct = () =>{
+const cancelAddProduct = () => {
   isAdding.value = false;
   currentProduct.value = {};
-}
+};
 const updateProductInfo = async (product) => {
   try {
     const editedItem = await editItem(
@@ -75,12 +75,13 @@ const setEditProduct = (product) => {
 </script>
 
 <template>
-  <Header
-    :userId="props.aid"
-    nav-bar="hide"
-  />
+  <div class="p-8 flex justify-end">
+    <router-link to="/">
+      <h1 class="text-blue-500 underline">Logout</h1>
+    </router-link>
+  </div>
   <div>
-    <div class="p-8 flex justify-end" v-if="!isAdding && !isEditing">
+    <div class="pr-8 flex justify-end" v-if="!isAdding && !isEditing">
       <button class="btn btn-primary" @click="isAdding = !isAdding">Add</button>
     </div>
 
