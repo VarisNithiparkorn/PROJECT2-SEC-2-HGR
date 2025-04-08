@@ -69,7 +69,7 @@ function resetform() {
     </div>
 
     <!-- User Information Section -->
-    <div class="flex justify-center bg-white w-full h-[70%]">
+    <div class="flex justify-center bg-blue-500 w-full h-[70%]">
         <div class="w-[50%] h-full bg-white border shadow-md p-4 rounded-xl flex flex-col">
             <div class="ml-4 mt-2 space-y-3" v-for="(value, key) in selectedUser" :key="key">
                 <label class="flex items-center text-gray-700 font-medium" v-if="key !== 'id' && key !== 'role' && key !== 'password'">

@@ -14,7 +14,6 @@ const props = defineProps({
 
 // to reset inputValue after change mode
 onBeforeUpdate(()=>{
-    console.log('onBeforeUpdate')
     data = props.inputField
 })
 
@@ -36,7 +35,6 @@ function combineData() {
     }else{
         data[event.target.id] = event.target.value.trim()
     }
-    console.log(event.target.id)
     emit('assginData',data)
   }
  

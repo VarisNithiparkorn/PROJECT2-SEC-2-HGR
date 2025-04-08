@@ -160,10 +160,10 @@ async function checkAccount(emailorPass){
     }
     forgotPassAcc[0].password = emailorPass
     const updatedUser = await updateItem(url+'/users',forgotPassAcc[0].id,forgotPassAcc[0])
-    reserForm()
+    resetForm()
   }
   if(passwordHelp.value && !passwordHelp2.value){
-    if(emailorPass === null || emailorPass.length === 0 || emailorPass === undefined || emailorPass === ''){
+    if(emailorPass === null || emailorPass === undefined || emailorPass.length === 0  || emailorPass === ''){
       err.value = 'please enter your email'
       return
     }
@@ -177,7 +177,7 @@ async function checkAccount(emailorPass){
     passwordHelp2.value = true 
   }
 }
-function reserForm(){const head = ref('enter your email')
+function resetForm(){const head = ref('enter your email')
  passwordHelp.value = false
  passwordHelp2.value = false
  confirmPass.value = ''
@@ -235,9 +235,14 @@ function reserForm(){const head = ref('enter your email')
     </div>
   </div>
   <InputPopUp :enable="passwordHelp" :label="head" :error-msg="err" @confirm="checkAccount" :input-type="inputType">
+    <template #back>
+      <button  class=" w-[20px] h-[20px]" @click="resetForm">
+        <img class=" w-full h-full" src="../assets/return.png">
+      </button>
+    </template>
     <template #head>
-      <h1 v-show="passwordHelp">
-        {{headMsg}}
+      <h1 class=" text-black font-bold text-2xl mb-4">
+        {{ headMsg }}
       </h1>
     </template>
     <template v-slot:confirmPass>

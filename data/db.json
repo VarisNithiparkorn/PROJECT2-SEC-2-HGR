@@ -1,48 +1,28 @@
 {
   "users": [
-    {
-      "id": "727c",
-      "firstName": "test1",
-      "lastName": "test10",
-      "username": "test10",
-      "password": "test1",
-      "email": "test1@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "4bfa",
-      "firstName": "test2",
-      "lastName": "test2",
-      "username": "test2",
-      "password": "test2",
-      "email": "test2@gmail.com",
-      "role": "user",
-      "address": "123 test test"
-    },
-    {
-      "id": "fe27",
-      "firstName": "test3",
-      "lastName": "test3",
-      "username": "test3",
-      "password": "test3",
-      "email": "test3@gmail.com",
-      "role": "user",
-      "address": ""
-    },
-    {
-      "id": "9999",
-      "firstName": "admin",
-      "lastName": "admin",
-      "username": "admin",
-      "password": "admin",
-      "email": "test3@gmail.com",
-      "address": "",
-      "role": "admin"
-    }
   ],
   "carts": [
     {
-      "products": [],
+      "products": [
+        {
+          "id": "45f4",
+          "productName": "MSI Modern AM272P",
+          "price": 22490,
+          "quantityInStock": 1,
+          "description": "AIO MSI Modern AM272P 1M-829TH (White)",
+          "type": "pc",
+          "amount": 1
+        },
+        {
+          "id": "cbea",
+          "productName": "ASUS TUF GAMING",
+          "price": 26990,
+          "quantityInStock": 3,
+          "description": "NOTEBOOK ASUS TUF GAMING A15 FA506NFR-HN005W (GRAPHITE BLACK)",
+          "type": "laptop",
+          "amount": 1
+        }
+      ],
       "id": "727c"
     },
     {
@@ -67,6 +47,10 @@
     },
     {
       "id": "404f",
+      "products": []
+    },
+    {
+      "id": "552c",
       "products": []
     }
   ],
