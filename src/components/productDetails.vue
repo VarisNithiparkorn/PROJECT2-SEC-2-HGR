@@ -63,10 +63,14 @@ onMounted(async () => {
 
 </script>
 <template>
+<div class="h-screen flex flex-col bg-white">
+  <div>
   <router-link :to="{ name: 'Home' }">
-    <button class="text-xl p-4 cursor-pointer" @click="back">Back</button>
+    <button class="text-xl p-4 cursor-pointer text-black" @click="back">Back</button>
   </router-link>
-  <div class="flex items-center justify-center" v-if="product">
+</div>
+  <div class="flex-1 flex flex-col items-center justify-center mb-26" v-if="product">
+
     <div
       class="w-full max-w-6xl md:grid md:grid-cols-2 flex flex-wrap justify-center p-4"
     >
@@ -89,7 +93,7 @@ onMounted(async () => {
           >
         </div>
         <div class="mt-3">
-          <span class="text-gray-500">${{ product.price }}</span>
+          <span class="text-gray-500">${{ product.price.toLocaleString() }}</span>
         </div>
         <div class="mt-6 flex flex-wrap max-md:justify-center">
           <button 
@@ -99,46 +103,10 @@ onMounted(async () => {
             Add to Cart
           </button>
         </div>
-        <div class="flex flex-col pt-5 max-md:justify-center">
-          <div class="rating">
-            <input
-              type="radio"
-              name="rating-2"
-              class="mask mask-star-2 bg-orange-400"
-              aria-label="1 star"
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              class="mask mask-star-2 bg-orange-400"
-              aria-label="2 star"
-              checked="checked"
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              class="mask mask-star-2 bg-orange-400"
-              aria-label="3 star"
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              class="mask mask-star-2 bg-orange-400"
-              aria-label="4 star"
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              class="mask mask-star-2 bg-orange-400"
-              aria-label="5 star"
-            />
-          </div>
-          <textarea class="textarea mt-2" placeholder="Comment"></textarea>
-          <button class="btn w-15 mt-2">Submit</button>
-        </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style scoped></style>

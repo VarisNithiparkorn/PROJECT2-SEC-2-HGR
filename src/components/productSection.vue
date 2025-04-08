@@ -106,8 +106,7 @@ onMounted(async () => {
         <label class="block mb-2 font-medium">Category</label>
         <select
           class="max-sm:text-[12px] w-full p-2 rounded-md text-black bg-white border border-gray-300 focus:outline-none"
-          v-model="selectedCategory"
-        >
+          v-model="selectedCategory"        >
           <option value="">All Categories</option>
           <option value="pc">PC</option>
           <option value="laptop">Laptop</option>
@@ -170,8 +169,8 @@ onMounted(async () => {
       <div
         v-else
         class="grid grid-cols-5 
-        max-[1025px]:grid-cols-3
-        max-[426px]:grid-cols-1"
+        max-lg:grid-cols-3
+        max-sm:grid-cols-1"
         
       >
         <div
