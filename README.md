@@ -142,3 +142,8 @@
  </td>
   </tr>
 </table>
+
+<h1>อ้างอิง</h1>
+<p>
+ข้อมูล,รูปภาพสินค้า - ihavecpu (https://ihavecpu.com/)
+</p>
