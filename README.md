@@ -52,8 +52,13 @@
 4. หากผู้ใช้ยืนยันสินค้าและกดชำระเงิน จะเข้าสูหน้าการชำระเงิน ผู้ใช้จำเป็นต้อง เพิ่มที่อยู่สำหรับรับสินค้าให้เรียบร้อย และคลิกชำระเงินเพื่อจบคำสั่งซื้อ
 </p>
 <h1>
+  คลิปสาธิต features
+</h1>
+https://www.youtube.com/watch?v=KF11AWcn0_g
+<h1>
   Components diagram
 </h1>
+<img src="./src/assets/componentsDiagram/diagram.png" width="800" height="500"><br>
 <h2>
   AccountProfile page
 </h2>
@@ -87,20 +92,20 @@
     <td> สิ่งที่รับผิดชอบ</td>
   </tr>
   <tr>
-    <td>66130500105 Varis Nithiparkorn </td>
+    <td>66130500105 Varis Nithiparkorn (30%)</td>
     <td> - Create User Account<br>
     - Login if user already have an account<br>
     - User can edit own information like address, name, phone and email</td>
   </tr>
   <tr>
-    <td>66130500109<br> Kritsada Atchariyapruk</td>
+    <td>66130500109<br> Kritsada Atchariyapruk (40%)</td>
     <td>
     - Header(search bar,จำนวนของในตะกร้า)<br>
     - หน้าตะกร้าสินค้า(ลบเพิ่มจำนวนสินค้าในตะกร้า)<br>
     - หน้าadmin (crud)</td>
   </tr>
   <tr>
-    <td>66130500124<br> Phusara Khadseela</td>
+    <td>66130500124<br> Phusara Khadseela (30%)</td>
     <td> - การแสดงข้อมูลสินค้า  <br>
     - List สินค้าในหน้า Home <br>
     - Filler สินค้า <br>
