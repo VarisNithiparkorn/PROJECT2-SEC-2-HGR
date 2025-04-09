@@ -9,6 +9,16 @@
       "email": "admin@gmail.com",
       "role": "admin",
       "address": ""
+    },
+    {
+      "id": "99f4",
+      "firstName": "test",
+      "lastName": "test",
+      "username": "test",
+      "password": "test",
+      "email": "test@gmail.com",
+      "role": "user",
+      "address": "128485000"
     }
   ],
   "carts": [
@@ -74,6 +84,10 @@
     {
       "id": "d3bd",
       "products": []
+    },
+    {
+      "products": [],
+      "id": "99f4"
     }
   ],
   "products": [
