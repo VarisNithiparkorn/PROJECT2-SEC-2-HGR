@@ -93,7 +93,7 @@ onMounted(async () => {
           >
         </div>
         <div class="mt-3">
-          <span class="text-gray-500">${{ product.price.toLocaleString() }}</span>
+          <span class="text-gray-500">฿{{ product.price.toLocaleString() }}</span>
         </div>
         <div class="mt-6 flex flex-wrap max-md:justify-center">
           <button 

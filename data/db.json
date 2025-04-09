@@ -66,7 +66,7 @@
     {
       "id": "f59e",
       "productName": "Lenovo IdeaCentre",
-      "price": "28990",
+      "price": 28990,
       "quantityInStock": 4,
       "description": "AIO Lenovo IdeaCentre AIO 27IRH9 (F0HM006UTA)",
       "type": "pc"
