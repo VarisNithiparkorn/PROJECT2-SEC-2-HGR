@@ -1,5 +1,15 @@
 {
   "users": [
+    {
+      "id": "5e3f",
+      "firstName": "admin1",
+      "lastName": "admin1",
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@gmail.com",
+      "role": "admin",
+      "address": ""
+    }
   ],
   "carts": [
     {
@@ -51,6 +61,14 @@
     },
     {
       "id": "552c",
+      "products": []
+    },
+    {
+      "products": [],
+      "id": "9b41"
+    },
+    {
+      "id": "5e3f",
       "products": []
     }
   ],

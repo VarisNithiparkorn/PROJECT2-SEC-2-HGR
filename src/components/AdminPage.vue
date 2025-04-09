@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue";
 import ListModel from "./ListModel.vue";
 import { addItem, deleteItemById, getItems, editItem } from "@/libs/fetchUtils";
 import ProductForm from "./ProductForm.vue";
-import Header from "./Header.vue";
 const products = ref([]);
 const props = defineProps({
   aid: {
