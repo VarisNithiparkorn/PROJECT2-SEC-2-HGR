@@ -4,7 +4,6 @@ import ListCartItem from "./ListCartItem.vue";
 import { editItem, getItemById, updateItem } from "@/libs/fetchUtils";
 import { useCarts } from "@/stores/Carts";
 import { storeToRefs } from "pinia";
-import Header from "./Header.vue";
 
 const myCart = useCarts();
 const { initCart, updateProductInCart } = myCart;

@@ -1,6 +1,6 @@
 <script setup>
 import { getItemByFieldName, getItemById, updateItem } from '@/libs/fetchUtils';
-import { onBeforeUpdate, onMounted, onUnmounted, watch } from 'vue';
+import {onMounted} from 'vue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import InputPopUp from './InputPopUp.vue';
