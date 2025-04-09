@@ -10,7 +10,7 @@ const { initCart, updateProductInCart } = myCart;
 
 const { carts, calculateTotalPrice } = storeToRefs(myCart);
 
-const emit = defineEmits(["editCart"]);
+const emit = defineEmits(["editCart","login"]);
 const props = defineProps({
   userId: {
     type: String,
