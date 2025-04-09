@@ -40,6 +40,9 @@ async function register() {
     }else if(!isLogin.value){
         const newAccount = {}
         const fieldsName = Object.keys(userInput.value)
+        if(JSON.stringify(userInput.value) === '{}'){
+          erroeMsg.value ='please enter your information'
+        }
         for (let index = 0; index < fieldsName.length; index++) {
             const inputValue = userInput.value[fieldsName[index]] 
             
