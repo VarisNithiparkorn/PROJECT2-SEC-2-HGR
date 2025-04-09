@@ -125,29 +125,29 @@ https://www.youtube.com/watch?v=KF11AWcn0_g
 </h1>
 <img src="./src/assets/componentsDiagram/diagram.png" width="800" height="500"><br>
 <h2>
-  AccountProfile page
+  Login & Register page
 </h2>
-<img src="./src/assets/componentsDiagram/accountprofilediagram.png" width="800" height="500"><br>
-<h2>
-  Admin page
-</h2>
-<img src="./src/assets/componentsDiagram/admindiagram.png" width="800" height="500"><br>
-<h2>
-  Cart page
-</h2>
-<img src="./src/assets/componentsDiagram/cartDiagram.png" width="800" height="500"><br>
+<img src="./src/assets/componentsDiagram/d1.png" width="800" height="500"><br>
 <h2>
   Home page
 </h2>
-<img src="./src/assets/componentsDiagram/hompageDiagram.png" width="800" height="500"><br>
+<img src="./src/assets/componentsDiagram/d2.png" width="800" height="500"><br>
 <h2>
-  Register page
+  Profile page
 </h2>
-<img src="./src/assets/componentsDiagram/logindiagram.png" width="800" height="500"><br>
+<img src="./src/assets/componentsDiagram/d3.png" width="800" height="500"><br>
+<h2>
+  Cart page
+</h2>
+<img src="./src/assets/componentsDiagram/d4.png" width="800" height="500"><br>
 <h2>
   Payment page
 </h2>
-<img src="./src/assets/componentsDiagram/paymentdiagram.png" width="800" height="500"><br>
+<img src="./src/assets/componentsDiagram/d5.png" width="800" height="500"><br>
+<h2>
+  Admin page
+</h2>
+<img src="./src/assets/componentsDiagram/d6.png" width="800" height="500"><br>
 
 <h1>อ้างอิง</h1>
 <p>
